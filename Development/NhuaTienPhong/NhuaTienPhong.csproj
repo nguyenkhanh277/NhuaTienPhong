@@ -1,0 +1,394 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{17BB81E8-518E-4091-B4CA-B31B8A16ACF0}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>NhuaTienPhong</RootNamespace>
+    <AssemblyName>NhuaTienPhong</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup />
+  <PropertyGroup>
+    <ApplicationIcon>icon.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DevExpress.BonusSkins.v19.1, Version=19.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\DevExpress 19.1\Components\Bin\Framework\DevExpress.BonusSkins.v19.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Charts.v19.1.Core, Version=19.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.CodeParser.v19.1, Version=19.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\DevExpress 19.1\Components\Bin\Framework\DevExpress.CodeParser.v19.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.DataAccess.v19.1, Version=19.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\DevExpress 19.1\Components\Bin\Framework\DevExpress.DataAccess.v19.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Office.v19.1.Core, Version=19.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Pdf.v19.1.Core, Version=19.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.PivotGrid.v19.1.Core, Version=19.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.RichEdit.v19.1.Core, Version=19.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.RichEdit.v19.1.Export, Version=19.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Utils.v19.1.UI, Version=19.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Xpo.v19.1, Version=19.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\DevExpress 19.1\Components\Bin\Framework\DevExpress.Xpo.v19.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraCharts.v19.1, Version=19.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraGauges.v19.1.Core, Version=19.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraGrid.v19.1, Version=19.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraLayout.v19.1, Version=19.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraPrinting.v19.1, Version=19.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraReports.v19.1, Version=19.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraReports.v19.1.Extensions, Version=19.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraScheduler.v19.1, Version=19.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraScheduler.v19.1.Core, Version=19.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraTreeList.v19.1, Version=19.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\DevExpress 19.1\Components\Bin\Framework\DevExpress.XtraTreeList.v19.1.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Data.v19.1, Version=19.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Printing.v19.1.Core, Version=19.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Sparkline.v19.1.Core, Version=19.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Utils.v19.1, Version=19.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraBars.v19.1, Version=19.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraEditors.v19.1, Version=19.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="Registration, Version=2.0.20.612, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>dll\Registration.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Core\Domain\Base.cs" />
+    <Compile Include="Core\Domain\Inventory.cs" />
+    <Compile Include="Core\Domain\LanguageLibrary.cs" />
+    <Compile Include="Core\Domain\ProgramFunctionAuthority.cs" />
+    <Compile Include="Core\Domain\AuthorityGroup.cs" />
+    <Compile Include="Core\Domain\Agency.cs" />
+    <Compile Include="Core\Domain\Car.cs" />
+    <Compile Include="Core\Domain\Order.cs" />
+    <Compile Include="Core\Domain\OrderDetail.cs" />
+    <Compile Include="Core\Domain\Unit.cs" />
+    <Compile Include="Core\Domain\Warehouse.cs" />
+    <Compile Include="Core\Domain\UserAuthority.cs" />
+    <Compile Include="Core\Domain\ProgramFunctionMaster.cs" />
+    <Compile Include="Core\Domain\User.cs" />
+    <Compile Include="Core\GlobalConstants.cs" />
+    <Compile Include="Core\Helper\GenerateBarcode.cs" />
+    <Compile Include="Core\Helper\LanguageTranslate.cs" />
+    <Compile Include="Core\Helper\GeneralHelper.cs" />
+    <Compile Include="Core\Helper\Logger.cs" />
+    <Compile Include="Core\Helper\SecurityHelper.cs" />
+    <Compile Include="Core\Repositories\IRepository.cs" />
+    <Compile Include="Persistence\Repositories\LanguageLibraryRepository.cs" />
+    <Compile Include="Persistence\Repositories\ProgramFunctionAuthorityRepository.cs" />
+    <Compile Include="Persistence\Repositories\AuthorityGroupRepository.cs" />
+    <Compile Include="Persistence\Repositories\CarRepository.cs" />
+    <Compile Include="Persistence\Repositories\AgencyRepository.cs" />
+    <Compile Include="Persistence\Repositories\InventoryRepository.cs" />
+    <Compile Include="Persistence\Repositories\OrderRepository.cs" />
+    <Compile Include="Persistence\Repositories\OrderDetailRepository.cs" />
+    <Compile Include="Persistence\Repositories\WarehouseRepository.cs" />
+    <Compile Include="Persistence\Repositories\UnitRepository.cs" />
+    <Compile Include="Persistence\Repositories\UserAuthorityRepository.cs" />
+    <Compile Include="Persistence\Repositories\Repository.cs" />
+    <Compile Include="Persistence\Repositories\ProgramFunctionMasterRepository.cs" />
+    <Compile Include="Persistence\Repositories\UserRepository.cs" />
+    <Compile Include="View\Inventorys\frmInventory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Inventorys\frmInventory.Designer.cs">
+      <DependentUpon>frmInventory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Inventorys\frmInventoryAddEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Inventorys\frmInventoryAddEdit.Designer.cs">
+      <DependentUpon>frmInventoryAddEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Cars\frmCar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Cars\frmCar.Designer.cs">
+      <DependentUpon>frmCar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Cars\frmCarAddEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Cars\frmCarAddEdit.Designer.cs">
+      <DependentUpon>frmCarAddEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Warehouses\frmWarehouse.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Warehouses\frmWarehouse.Designer.cs">
+      <DependentUpon>frmWarehouse.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Warehouses\frmWarehouseAddEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Warehouses\frmWarehouseAddEdit.Designer.cs">
+      <DependentUpon>frmWarehouseAddEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\AuthorityGroups\frmAuthorityGroup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\AuthorityGroups\frmAuthorityGroup.Designer.cs">
+      <DependentUpon>frmAuthorityGroup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\AuthorityGroups\frmAuthorityGroupAddEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\AuthorityGroups\frmAuthorityGroupAddEdit.Designer.cs">
+      <DependentUpon>frmAuthorityGroupAddEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Home\frmLicenses.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Home\frmLicenses.Designer.cs">
+      <DependentUpon>frmLicenses.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Home\frmSetting.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Home\frmSetting.Designer.cs">
+      <DependentUpon>frmSetting.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Home\frmChangePassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Home\frmChangePassword.Designer.cs">
+      <DependentUpon>frmChangePassword.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\LanguageLibrarys\frmLanguageLibrary.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\LanguageLibrarys\frmLanguageLibrary.Designer.cs">
+      <DependentUpon>frmLanguageLibrary.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\LanguageLibrarys\frmLanguageLibraryAddEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\LanguageLibrarys\frmLanguageLibraryAddEdit.Designer.cs">
+      <DependentUpon>frmLanguageLibraryAddEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Agencys\frmAgency.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Agencys\frmAgency.Designer.cs">
+      <DependentUpon>frmAgency.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Agencys\frmAgencyAddEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Agencys\frmAgencyAddEdit.Designer.cs">
+      <DependentUpon>frmAgencyAddEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Units\frmUnit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Units\frmUnit.Designer.cs">
+      <DependentUpon>frmUnit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Units\frmUnitAddEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Units\frmUnitAddEdit.Designer.cs">
+      <DependentUpon>frmUnitAddEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\ProgramFunctionMasters\frmProgramFunctionMaster.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\ProgramFunctionMasters\frmProgramFunctionMaster.Designer.cs">
+      <DependentUpon>frmProgramFunctionMaster.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\ProgramFunctionMasters\frmProgramFunctionMasterAddEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\ProgramFunctionMasters\frmProgramFunctionMasterAddEdit.Designer.cs">
+      <DependentUpon>frmProgramFunctionMasterAddEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Users\frmUsers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Users\frmUsers.Designer.cs">
+      <DependentUpon>frmUsers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Users\frmUsersAddEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Users\frmUsersAddEdit.Designer.cs">
+      <DependentUpon>frmUsersAddEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Core\IUnitOfWork.cs" />
+    <Compile Include="View\Home\frmMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Home\frmMain.Designer.cs">
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Home\frmSignIn.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Home\frmSignIn.Designer.cs">
+      <DependentUpon>frmSignIn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Persistence\ProjectDataContext.cs" />
+    <Compile Include="Persistence\UnitOfWork.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="View\Inventorys\frmInventory.resx">
+      <DependentUpon>frmInventory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Inventorys\frmInventoryAddEdit.resx">
+      <DependentUpon>frmInventoryAddEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Cars\frmCar.resx">
+      <DependentUpon>frmCar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Cars\frmCarAddEdit.resx">
+      <DependentUpon>frmCarAddEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Warehouses\frmWarehouse.resx">
+      <DependentUpon>frmWarehouse.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Warehouses\frmWarehouseAddEdit.resx">
+      <DependentUpon>frmWarehouseAddEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\AuthorityGroups\frmAuthorityGroup.resx">
+      <DependentUpon>frmAuthorityGroup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\AuthorityGroups\frmAuthorityGroupAddEdit.resx">
+      <DependentUpon>frmAuthorityGroupAddEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Home\frmLicenses.resx">
+      <DependentUpon>frmLicenses.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Home\frmSetting.resx">
+      <DependentUpon>frmSetting.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Home\frmChangePassword.resx">
+      <DependentUpon>frmChangePassword.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\LanguageLibrarys\frmLanguageLibrary.resx">
+      <DependentUpon>frmLanguageLibrary.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\LanguageLibrarys\frmLanguageLibraryAddEdit.resx">
+      <DependentUpon>frmLanguageLibraryAddEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Agencys\frmAgency.resx">
+      <DependentUpon>frmAgency.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Agencys\frmAgencyAddEdit.resx">
+      <DependentUpon>frmAgencyAddEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Units\frmUnit.resx">
+      <DependentUpon>frmUnit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Units\frmUnitAddEdit.resx">
+      <DependentUpon>frmUnitAddEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\ProgramFunctionMasters\frmProgramFunctionMaster.resx">
+      <DependentUpon>frmProgramFunctionMaster.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\ProgramFunctionMasters\frmProgramFunctionMasterAddEdit.resx">
+      <DependentUpon>frmProgramFunctionMasterAddEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Users\frmUsers.resx">
+      <DependentUpon>frmUsers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Users\frmUsersAddEdit.resx">
+      <DependentUpon>frmUsersAddEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Home\frmMain.resx">
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Home\frmSignIn.resx">
+      <DependentUpon>frmSignIn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Persistence\EntityConfigurations\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="icon.ico" />
+    <None Include="image\Agency.png" />
+    <None Include="image\Warehouse.png" />
+    <None Include="image\Unit.png" />
+    <None Include="image\Shop.png" />
+    <None Include="image\Inventory.png" />
+    <None Include="image\Car.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
