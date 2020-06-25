@@ -14,12 +14,12 @@ using NhuaTienPhong.Core.Domain;
 using NhuaTienPhong.Core;
 using NhuaTienPhong.Core.Helper;
 
-namespace NhuaTienPhong.View.Units
+namespace NhuaTienPhong.View.Categorys
 {
-    public partial class frmUnitAddEdit : DevExpress.XtraEditors.XtraForm
+    public partial class frmCategoryAddEdit : DevExpress.XtraEditors.XtraForm
     {
         ProjectDataContext _projectDataContext = new ProjectDataContext();
-        UnitRepository _unitRepository;
+        CategoryRepository _categoryRepository;
 
         protected override void OnClosing(System.ComponentModel.CancelEventArgs e)
         {
@@ -41,26 +41,26 @@ namespace NhuaTienPhong.View.Units
         string _id = "";
         bool _quickAdd = false;
 
-        public frmUnitAddEdit()
+        public frmCategoryAddEdit()
         {
             InitializeComponent();
         }
 
-        public frmUnitAddEdit(bool quickAdd)
+        public frmCategoryAddEdit(bool quickAdd)
         {
             InitializeComponent();
             _quickAdd = quickAdd;
         }
 
-        public frmUnitAddEdit(string id)
+        public frmCategoryAddEdit(string id)
         {
             InitializeComponent();
             _id = id;
         }
 
-        private void frmUnitAddEdit_Load(object sender, EventArgs e)
+        private void frmCategoryAddEdit_Load(object sender, EventArgs e)
         {
-            _unitRepository = new UnitRepository(_projectDataContext);
+            _categoryRepository = new CategoryRepository(_projectDataContext);
             LanguageTranslate.ChangeLanguageForm(this);
             if (String.IsNullOrEmpty(_id))
             {
@@ -74,38 +74,38 @@ namespace NhuaTienPhong.View.Units
 
         private void Clear()
         {
-            txtUnitName.Text = "";
+            txtCategoryName.Text = "";
             txtGhiChu.Text = "";
             chkUsing.Checked = true;
-            txtUnitName.Focus();
+            txtCategoryName.Focus();
         }
 
         private void GetData()
         {
-            //Get Data Table Unit
-            Unit unit = _unitRepository.Get(_id);
-            txtUnitName.Text = unit.UnitName;
-            txtGhiChu.Text = unit.Note;
-            chkUsing.Checked = (unit.Status == GlobalConstants.StatusValue.Using);
+            //Get Data Table Category
+            Category category = _categoryRepository.Get(_id);
+            txtCategoryName.Text = category.CategoryName;
+            txtGhiChu.Text = category.Note;
+            chkUsing.Checked = (category.Status == GlobalConstants.StatusValue.Using);
         }
 
         private bool CheckData()
         {
-            if (txtUnitName.Text.Trim() == "")
+            if (txtCategoryName.Text.Trim() == "")
             {
                 XtraMessageBox.Show(LanguageTranslate.ChangeLanguageText("Chưa điền dữ liệu"), LanguageTranslate.ChangeLanguageText("Thông báo"), MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txtUnitName.Focus();
+                txtCategoryName.Focus();
                 return false;
             }
-            Unit unit = _unitRepository.FirstOrDefault(_ => _.UnitName.Equals(txtUnitName.Text.Trim()));
-            if (unit != null &&
+            Category category = _categoryRepository.FirstOrDefault(_ => _.CategoryName.Equals(txtCategoryName.Text.Trim()));
+            if (category != null &&
                 (
                     String.IsNullOrEmpty(_id) ||
-                    (!String.IsNullOrEmpty(_id) && txtUnitName.Text.Trim() != unit.UnitName)
+                    (!String.IsNullOrEmpty(_id) && txtCategoryName.Text.Trim() != category.CategoryName)
                 ))
             {
                 XtraMessageBox.Show(LanguageTranslate.ChangeLanguageText("Dữ liệu đã tồn tại"), LanguageTranslate.ChangeLanguageText("Thông báo"), MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txtUnitName.Focus();
+                txtCategoryName.Focus();
                 return false;
             }
             return true;
@@ -116,22 +116,22 @@ namespace NhuaTienPhong.View.Units
             try
             {
                 if (!CheckData()) return;
-                //Table Unit
-                Unit unit = new Unit();
-                unit.Id = _id;
-                unit.UnitName = txtUnitName.Text.Trim();
-                unit.Note = txtGhiChu.Text.Trim();
-                unit.Status = (chkUsing.Checked ? GlobalConstants.StatusValue.Using : GlobalConstants.StatusValue.NoUse);
-                _unitRepository.Save(unit);
-                UnitOfWork unitOfWork = new UnitOfWork(_projectDataContext);
-                int result = unitOfWork.Complete();
+                //Table Category
+                Category category = new Category();
+                category.Id = _id;
+                category.CategoryName = txtCategoryName.Text.Trim();
+                category.Note = txtGhiChu.Text.Trim();
+                category.Status = (chkUsing.Checked ? GlobalConstants.StatusValue.Using : GlobalConstants.StatusValue.NoUse);
+                _categoryRepository.Save(category);
+                UnitOfWork categoryOfWork = new UnitOfWork(_projectDataContext);
+                int result = categoryOfWork.Complete();
                 if (result > 0)
                 {
                     if (String.IsNullOrEmpty(_id))
                     {
                         if (_quickAdd)
                         {
-                            this.Tag = _unitRepository.id;
+                            this.Tag = _categoryRepository.id;
                             DialogResult = DialogResult.OK;
                             Close();
                         }

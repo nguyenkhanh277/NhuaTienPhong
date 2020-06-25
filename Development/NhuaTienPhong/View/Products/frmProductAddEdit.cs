@@ -14,12 +14,14 @@ using NhuaTienPhong.Core.Domain;
 using NhuaTienPhong.Core;
 using NhuaTienPhong.Core.Helper;
 
-namespace NhuaTienPhong.View.Inventorys
+namespace NhuaTienPhong.View.Products
 {
-    public partial class frmInventoryAddEdit : DevExpress.XtraEditors.XtraForm
+    public partial class frmProductAddEdit : DevExpress.XtraEditors.XtraForm
     {
         ProjectDataContext _projectDataContext = new ProjectDataContext();
-        InventoryRepository _inventoryRepository;
+        ProductRepository _productRepository;
+        CategoryRepository _categoryRepository;
+        UnitRepository _unitRepository;
 
         protected override void OnClosing(System.ComponentModel.CancelEventArgs e)
         {
@@ -40,21 +42,25 @@ namespace NhuaTienPhong.View.Inventorys
 
         string _id = "";
 
-        public frmInventoryAddEdit()
+        public frmProductAddEdit()
         {
             InitializeComponent();
         }
 
-        public frmInventoryAddEdit(string id)
+        public frmProductAddEdit(string id)
         {
             InitializeComponent();
             _id = id;
         }
 
-        private void frmInventoryAddEdit_Load(object sender, EventArgs e)
+        private void frmProductAddEdit_Load(object sender, EventArgs e)
         {
-            _inventoryRepository = new InventoryRepository(_projectDataContext);
+            _productRepository = new ProductRepository(_projectDataContext);
+            _categoryRepository = new CategoryRepository(_projectDataContext);
+            _unitRepository = new UnitRepository(_projectDataContext);
             LanguageTranslate.ChangeLanguageForm(this);
+            LoadCategoryData();
+            LoadUnitData();
             if (String.IsNullOrEmpty(_id))
             {
                 Clear();
@@ -79,25 +85,37 @@ namespace NhuaTienPhong.View.Inventorys
 
         private void GetData()
         {
-            //Get Data Table Inventory
-            Inventory inventory = _inventoryRepository.Get(_id);
-            cbbWarehouse.SelectedValue = inventory.WarehouseId;
-            txtItemCode.Text = inventory.ItemCode;
-            txtItemName.Text = inventory.ItemName;
-            cbbUnit.SelectedValue = inventory.UnitId;
-            txtImportPrice.Value = (decimal)inventory.ImportPrice;
-            txtSalePrice.Value = (decimal)inventory.SalePrice;
-            txtRetailPrice.Value = (decimal)inventory.RetailPrice;
-            txtGhiChu.Text = inventory.Note;
-            chkUsing.Checked = (inventory.Status == GlobalConstants.StatusValue.Using);
+            //Get Data Table Product
+            Product product = _productRepository.Get(_id);
+            cbbCategory.SelectedValue = product.CategoryId;
+            txtItemCode.Text = product.ItemCode;
+            txtItemName.Text = product.ItemName;
+            cbbUnit.SelectedValue = product.UnitId;
+            txtImportPrice.Value = (decimal)product.ImportPrice;
+            txtSalePrice.Value = (decimal)product.SalePrice;
+            txtRetailPrice.Value = (decimal)product.RetailPrice;
+            txtGhiChu.Text = product.Note;
+            chkUsing.Checked = (product.Status == GlobalConstants.StatusValue.Using);
+        }
+
+        private void LoadCategoryData()
+        {
+            cbbCategory.DataSource = _categoryRepository.GetAll().OrderBy(_ => _.CategoryName).ToList();
+            cbbCategory.SelectedIndex = 0;
+        }
+
+        private void LoadUnitData()
+        {
+            cbbUnit.DataSource = _unitRepository.GetAll().OrderBy(_ => _.UnitName).ToList();
+            cbbUnit.SelectedIndex = 0;
         }
 
         private bool CheckData()
         {
-            if (cbbWarehouse.SelectedValue == null || cbbWarehouse.Text.Trim() == "")
+            if (cbbCategory.SelectedValue == null || cbbCategory.Text.Trim() == "")
             {
                 XtraMessageBox.Show(LanguageTranslate.ChangeLanguageText("Chưa điền dữ liệu"), LanguageTranslate.ChangeLanguageText("Thông báo"), MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                cbbWarehouse.Focus();
+                cbbCategory.Focus();
                 return false;
             }
             else if (txtItemCode.Text.Trim() == "")
@@ -118,11 +136,11 @@ namespace NhuaTienPhong.View.Inventorys
                 cbbUnit.Focus();
                 return false;
             }
-            Inventory inventory = _inventoryRepository.FirstOrDefault(_ => _.ItemCode.Equals(txtItemCode.Text.Trim()));
-            if (inventory != null &&
+            Product product = _productRepository.FirstOrDefault(_ => _.ItemCode.Equals(txtItemCode.Text.Trim()));
+            if (product != null &&
                 (
                     String.IsNullOrEmpty(_id) ||
-                    (!String.IsNullOrEmpty(_id) && txtItemCode.Text.Trim() != inventory.ItemCode)
+                    (!String.IsNullOrEmpty(_id) && txtItemCode.Text.Trim() != product.ItemCode)
                 ))
             {
                 XtraMessageBox.Show(LanguageTranslate.ChangeLanguageText("Dữ liệu đã tồn tại"), LanguageTranslate.ChangeLanguageText("Thông báo"), MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -137,21 +155,21 @@ namespace NhuaTienPhong.View.Inventorys
             try
             {
                 if (!CheckData()) return;
-                //Table Inventory
-                Inventory inventory = new Inventory();
-                inventory.Id = _id;
-                inventory.WarehouseId = cbbWarehouse.SelectedValue.ToString();
-                inventory.ItemCode = txtItemCode.Text.Trim();
-                inventory.ItemName = txtItemName.Text.Trim();
-                inventory.UnitId = cbbUnit.SelectedValue.ToString();
-                inventory.ImportPrice = (float)txtImportPrice.Value;
-                inventory.SalePrice = (float)txtSalePrice.Value;
-                inventory.RetailPrice = (float)txtRetailPrice.Value;
-                inventory.Note = txtGhiChu.Text.Trim();
-                inventory.Status = (chkUsing.Checked ? GlobalConstants.StatusValue.Using : GlobalConstants.StatusValue.NoUse);
-                _inventoryRepository.Save(inventory);
-                UnitOfWork inventoryOfWork = new UnitOfWork(_projectDataContext);
-                int result = inventoryOfWork.Complete();
+                //Table Product
+                Product product = new Product();
+                product.Id = _id;
+                product.CategoryId = cbbCategory.SelectedValue.ToString();
+                product.ItemCode = txtItemCode.Text.Trim();
+                product.ItemName = txtItemName.Text.Trim();
+                product.UnitId = cbbUnit.SelectedValue.ToString();
+                product.ImportPrice = (float)txtImportPrice.Value;
+                product.SalePrice = (float)txtSalePrice.Value;
+                product.RetailPrice = (float)txtRetailPrice.Value;
+                product.Note = txtGhiChu.Text.Trim();
+                product.Status = (chkUsing.Checked ? GlobalConstants.StatusValue.Using : GlobalConstants.StatusValue.NoUse);
+                _productRepository.Save(product);
+                UnitOfWork productOfWork = new UnitOfWork(_projectDataContext);
+                int result = productOfWork.Complete();
                 if (result > 0)
                 {
                     if (String.IsNullOrEmpty(_id))
@@ -182,6 +200,28 @@ namespace NhuaTienPhong.View.Inventorys
         private void btnClose_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void btnAddCategory_Click(object sender, EventArgs e)
+        {
+            Categorys.frmCategoryAddEdit frm = new Categorys.frmCategoryAddEdit(true);
+            DialogResult dr = frm.ShowDialog();
+            if (dr == DialogResult.OK && frm.Tag != null)
+            {
+                LoadCategoryData();
+                cbbCategory.SelectedValue = (string)frm.Tag;
+            }
+        }
+
+        private void btnAddUnit_Click(object sender, EventArgs e)
+        {
+            Units.frmUnitAddEdit frm = new Units.frmUnitAddEdit(true);
+            DialogResult dr = frm.ShowDialog();
+            if (dr == DialogResult.OK && frm.Tag != null)
+            {
+                LoadUnitData();
+                cbbUnit.SelectedValue = (string)frm.Tag;
+            }
         }
     }
 }

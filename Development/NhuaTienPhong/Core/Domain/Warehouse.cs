@@ -11,14 +11,5 @@ namespace NhuaTienPhong.Core.Domain
         public string Note { get; set; }
         public GlobalConstants.StatusValue Status { get; set; }
         #endregion
-
-        #region FK
-        public Warehouse()
-        {
-            inventorys = new ObservableCollection<Inventory>();
-        }
-
-        public virtual ObservableCollection<Inventory> inventorys { get; set; }
-        #endregion
     }
 }

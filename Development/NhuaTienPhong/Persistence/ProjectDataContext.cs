@@ -66,6 +66,8 @@ namespace NhuaTienPhong.Persistence
         public virtual DbSet<Car> Cars { get; set; }
         public virtual DbSet<Warehouse> Warehouses { get; set; }
         public virtual DbSet<Unit> Units { get; set; }
+        public virtual DbSet<Category> Categorys { get; set; }
+        public virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<Inventory> Inventorys { get; set; }
         public virtual DbSet<Order> Orders { get; set; }
         public virtual DbSet<OrderDetail> OrderDetails { get; set; }

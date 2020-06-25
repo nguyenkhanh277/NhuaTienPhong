@@ -45,13 +45,11 @@ namespace NhuaTienPhong.View.Home
             this.btnWarehouse = new DevExpress.XtraBars.BarButtonItem();
             this.btnAgency = new DevExpress.XtraBars.BarButtonItem();
             this.btnListProcessing = new DevExpress.XtraBars.BarButtonItem();
-            this.btnProductReportOK = new DevExpress.XtraBars.BarButtonItem();
-            this.btnProductReportNG = new DevExpress.XtraBars.BarButtonItem();
-            this.btnReportSyntheticRegistBarcode = new DevExpress.XtraBars.BarButtonItem();
             this.btnProcessingOrder = new DevExpress.XtraBars.BarButtonItem();
-            this.btnReportSyntheticProductionPlan = new DevExpress.XtraBars.BarButtonItem();
             this.btnSetting = new DevExpress.XtraBars.BarButtonItem();
             this.btnInventory = new DevExpress.XtraBars.BarButtonItem();
+            this.btnConfirmOrder = new DevExpress.XtraBars.BarButtonItem();
+            this.btnSyncVsBravo = new DevExpress.XtraBars.BarButtonItem();
             this.rbpHeThong = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.rbpDanhMuc = new DevExpress.XtraBars.Ribbon.RibbonPage();
@@ -60,8 +58,6 @@ namespace NhuaTienPhong.View.Home
             this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.rbpBaoCao = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup4 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.btnConfirmOrder = new DevExpress.XtraBars.BarButtonItem();
-            this.btnSyncVsBravo = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -85,11 +81,7 @@ namespace NhuaTienPhong.View.Home
             this.btnWarehouse,
             this.btnAgency,
             this.btnListProcessing,
-            this.btnProductReportOK,
-            this.btnProductReportNG,
-            this.btnReportSyntheticRegistBarcode,
             this.btnProcessingOrder,
-            this.btnReportSyntheticProductionPlan,
             this.btnSetting,
             this.btnInventory,
             this.btnConfirmOrder,
@@ -226,33 +218,6 @@ namespace NhuaTienPhong.View.Home
             this.btnListProcessing.Name = "btnListProcessing";
             this.btnListProcessing.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnListProcessing_ItemClick);
             // 
-            // btnProductReportOK
-            // 
-            this.btnProductReportOK.Caption = "Thống kê sản phẩm OK";
-            this.btnProductReportOK.Id = 36;
-            this.btnProductReportOK.ImageOptions.LargeImage = global::NhuaTienPhong.Properties.Resources.ScanBarcodeOK;
-            this.btnProductReportOK.LargeWidth = 100;
-            this.btnProductReportOK.Name = "btnProductReportOK";
-            this.btnProductReportOK.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnProductReportOK_ItemClick);
-            // 
-            // btnProductReportNG
-            // 
-            this.btnProductReportNG.Caption = "Thống kê sản phẩm NG";
-            this.btnProductReportNG.Id = 37;
-            this.btnProductReportNG.ImageOptions.LargeImage = global::NhuaTienPhong.Properties.Resources.ScanBarcodeNG;
-            this.btnProductReportNG.LargeWidth = 100;
-            this.btnProductReportNG.Name = "btnProductReportNG";
-            this.btnProductReportNG.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnProductReportNG_ItemClick);
-            // 
-            // btnReportSyntheticRegistBarcode
-            // 
-            this.btnReportSyntheticRegistBarcode.Caption = "Báo cáo tổng hợp theo mã vạch";
-            this.btnReportSyntheticRegistBarcode.Id = 38;
-            this.btnReportSyntheticRegistBarcode.ImageOptions.LargeImage = global::NhuaTienPhong.Properties.Resources.ReportSyntheticRegistBarcode;
-            this.btnReportSyntheticRegistBarcode.LargeWidth = 100;
-            this.btnReportSyntheticRegistBarcode.Name = "btnReportSyntheticRegistBarcode";
-            this.btnReportSyntheticRegistBarcode.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnReportSyntheticRegistBarcode_ItemClick);
-            // 
             // btnProcessingOrder
             // 
             this.btnProcessingOrder.Caption = "Duyệt đơn hàng";
@@ -260,15 +225,6 @@ namespace NhuaTienPhong.View.Home
             this.btnProcessingOrder.LargeWidth = 100;
             this.btnProcessingOrder.Name = "btnProcessingOrder";
             this.btnProcessingOrder.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnProcessingOrder_ItemClick);
-            // 
-            // btnReportSyntheticProductionPlan
-            // 
-            this.btnReportSyntheticProductionPlan.Caption = "Báo cáo tổng hợp theo kế hoạch";
-            this.btnReportSyntheticProductionPlan.Id = 40;
-            this.btnReportSyntheticProductionPlan.ImageOptions.LargeImage = global::NhuaTienPhong.Properties.Resources.ReportSyntheticProductionPlan;
-            this.btnReportSyntheticProductionPlan.LargeWidth = 100;
-            this.btnReportSyntheticProductionPlan.Name = "btnReportSyntheticProductionPlan";
-            this.btnReportSyntheticProductionPlan.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnReportSyntheticProductionPlan_ItemClick);
             // 
             // btnSetting
             // 
@@ -287,6 +243,20 @@ namespace NhuaTienPhong.View.Home
             this.btnInventory.LargeWidth = 100;
             this.btnInventory.Name = "btnInventory";
             this.btnInventory.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnInventory_ItemClick);
+            // 
+            // btnConfirmOrder
+            // 
+            this.btnConfirmOrder.Caption = "Xác nhận bốc hàng";
+            this.btnConfirmOrder.Id = 44;
+            this.btnConfirmOrder.Name = "btnConfirmOrder";
+            this.btnConfirmOrder.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnConfirmOrder_ItemClick);
+            // 
+            // btnSyncVsBravo
+            // 
+            this.btnSyncVsBravo.Caption = "Đồng bộ với Bravo";
+            this.btnSyncVsBravo.Id = 45;
+            this.btnSyncVsBravo.Name = "btnSyncVsBravo";
+            this.btnSyncVsBravo.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnSyncVsBravo_ItemClick);
             // 
             // rbpHeThong
             // 
@@ -346,25 +316,7 @@ namespace NhuaTienPhong.View.Home
             // 
             // ribbonPageGroup4
             // 
-            this.ribbonPageGroup4.ItemLinks.Add(this.btnProductReportOK);
-            this.ribbonPageGroup4.ItemLinks.Add(this.btnProductReportNG);
-            this.ribbonPageGroup4.ItemLinks.Add(this.btnReportSyntheticRegistBarcode);
-            this.ribbonPageGroup4.ItemLinks.Add(this.btnReportSyntheticProductionPlan);
             this.ribbonPageGroup4.Name = "ribbonPageGroup4";
-            // 
-            // btnConfirmOrder
-            // 
-            this.btnConfirmOrder.Caption = "Xác nhận bốc hàng";
-            this.btnConfirmOrder.Id = 44;
-            this.btnConfirmOrder.Name = "btnConfirmOrder";
-            this.btnConfirmOrder.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnConfirmOrder_ItemClick);
-            // 
-            // btnSyncVsBravo
-            // 
-            this.btnSyncVsBravo.Caption = "Đồng bộ với Bravo";
-            this.btnSyncVsBravo.Id = 45;
-            this.btnSyncVsBravo.Name = "btnSyncVsBravo";
-            this.btnSyncVsBravo.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnSyncVsBravo_ItemClick);
             // 
             // frmMain
             // 
@@ -406,12 +358,8 @@ namespace NhuaTienPhong.View.Home
         private DevExpress.XtraBars.Ribbon.RibbonPage rbpDanhMuc;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup3;
         private BarButtonItem btnListProcessing;
-        private BarButtonItem btnProductReportOK;
-        private BarButtonItem btnProductReportNG;
-        private BarButtonItem btnReportSyntheticRegistBarcode;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup4;
         private BarButtonItem btnProcessingOrder;
-        private BarButtonItem btnReportSyntheticProductionPlan;
         private BarButtonItem btnSetting;
         private BarStaticItem barStaticItem1;
         private BarButtonItem btnInventory;

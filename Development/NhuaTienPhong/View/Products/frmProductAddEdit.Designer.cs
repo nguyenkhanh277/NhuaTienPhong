@@ -1,6 +1,6 @@
-﻿namespace NhuaTienPhong.View.Inventorys
+﻿namespace NhuaTienPhong.View.Products
 {
-    partial class frmInventoryAddEdit
+    partial class frmProductAddEdit
     {
         /// <summary>
         /// Required designer variable.
@@ -42,11 +42,11 @@
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.txtItemName = new DevExpress.XtraEditors.TextEdit();
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
-            this.btnAddPartNumber = new System.Windows.Forms.Button();
+            this.btnAddUnit = new System.Windows.Forms.Button();
             this.cbbUnit = new System.Windows.Forms.ComboBox();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
-            this.button1 = new System.Windows.Forms.Button();
-            this.cbbWarehouse = new System.Windows.Forms.ComboBox();
+            this.btnAddCategory = new System.Windows.Forms.Button();
+            this.cbbCategory = new System.Windows.Forms.ComboBox();
             this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
             this.txtSalePrice = new DevExpress.XtraEditors.SpinEdit();
             this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
@@ -194,13 +194,10 @@
             this.txtImportPrice.Properties.Appearance.Options.UseFont = true;
             this.txtImportPrice.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.txtImportPrice.Properties.DisplayFormat.FormatString = "#,##0.##";
+            this.txtImportPrice.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
             this.txtImportPrice.Properties.IsFloatValue = false;
-            this.txtImportPrice.Properties.Mask.EditMask = "N00";
-            this.txtImportPrice.Properties.MaxValue = new decimal(new int[] {
-            9999,
-            0,
-            0,
-            0});
+            this.txtImportPrice.Properties.Mask.EditMask = "#,##0.##";
             this.txtImportPrice.Size = new System.Drawing.Size(300, 28);
             this.txtImportPrice.TabIndex = 4;
             // 
@@ -240,17 +237,18 @@
             this.labelControl4.TabIndex = 16;
             this.labelControl4.Text = "Tên hàng";
             // 
-            // btnAddPartNumber
+            // btnAddUnit
             // 
-            this.btnAddPartNumber.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.btnAddPartNumber.BackgroundImage = global::NhuaTienPhong.Properties.Resources.Add;
-            this.btnAddPartNumber.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnAddPartNumber.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAddPartNumber.Location = new System.Drawing.Point(317, 219);
-            this.btnAddPartNumber.Name = "btnAddPartNumber";
-            this.btnAddPartNumber.Size = new System.Drawing.Size(28, 28);
-            this.btnAddPartNumber.TabIndex = 12;
-            this.btnAddPartNumber.UseVisualStyleBackColor = false;
+            this.btnAddUnit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.btnAddUnit.BackgroundImage = global::NhuaTienPhong.Properties.Resources.Add;
+            this.btnAddUnit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnAddUnit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddUnit.Location = new System.Drawing.Point(317, 219);
+            this.btnAddUnit.Name = "btnAddUnit";
+            this.btnAddUnit.Size = new System.Drawing.Size(28, 28);
+            this.btnAddUnit.TabIndex = 12;
+            this.btnAddUnit.UseVisualStyleBackColor = false;
+            this.btnAddUnit.Click += new System.EventHandler(this.btnAddUnit_Click);
             // 
             // cbbUnit
             // 
@@ -275,29 +273,30 @@
             this.labelControl2.TabIndex = 18;
             this.labelControl2.Text = "Đơn vị tính";
             // 
-            // button1
+            // btnAddCategory
             // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.button1.BackgroundImage = global::NhuaTienPhong.Properties.Resources.Add;
-            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Location = new System.Drawing.Point(317, 34);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(28, 28);
-            this.button1.TabIndex = 11;
-            this.button1.UseVisualStyleBackColor = false;
+            this.btnAddCategory.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.btnAddCategory.BackgroundImage = global::NhuaTienPhong.Properties.Resources.Add;
+            this.btnAddCategory.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnAddCategory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddCategory.Location = new System.Drawing.Point(317, 34);
+            this.btnAddCategory.Name = "btnAddCategory";
+            this.btnAddCategory.Size = new System.Drawing.Size(28, 28);
+            this.btnAddCategory.TabIndex = 11;
+            this.btnAddCategory.UseVisualStyleBackColor = false;
+            this.btnAddCategory.Click += new System.EventHandler(this.btnAddCategory_Click);
             // 
-            // cbbWarehouse
+            // cbbCategory
             // 
-            this.cbbWarehouse.DisplayMember = "PartNo";
-            this.cbbWarehouse.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbbWarehouse.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.cbbWarehouse.FormattingEnabled = true;
-            this.cbbWarehouse.Location = new System.Drawing.Point(45, 34);
-            this.cbbWarehouse.Name = "cbbWarehouse";
-            this.cbbWarehouse.Size = new System.Drawing.Size(266, 28);
-            this.cbbWarehouse.TabIndex = 0;
-            this.cbbWarehouse.ValueMember = "Id";
+            this.cbbCategory.DisplayMember = "PartNo";
+            this.cbbCategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbbCategory.Font = new System.Drawing.Font("Segoe UI", 11F);
+            this.cbbCategory.FormattingEnabled = true;
+            this.cbbCategory.Location = new System.Drawing.Point(45, 34);
+            this.cbbCategory.Name = "cbbCategory";
+            this.cbbCategory.Size = new System.Drawing.Size(266, 28);
+            this.cbbCategory.TabIndex = 0;
+            this.cbbCategory.ValueMember = "Id";
             // 
             // labelControl5
             // 
@@ -306,9 +305,9 @@
             this.labelControl5.Location = new System.Drawing.Point(45, 10);
             this.labelControl5.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.labelControl5.Name = "labelControl5";
-            this.labelControl5.Size = new System.Drawing.Size(23, 17);
+            this.labelControl5.Size = new System.Drawing.Size(69, 17);
             this.labelControl5.TabIndex = 21;
-            this.labelControl5.Text = "Kho";
+            this.labelControl5.Text = "Nhóm hàng";
             // 
             // txtSalePrice
             // 
@@ -323,13 +322,10 @@
             this.txtSalePrice.Properties.Appearance.Options.UseFont = true;
             this.txtSalePrice.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.txtSalePrice.Properties.DisplayFormat.FormatString = "#,##0.##";
+            this.txtSalePrice.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
             this.txtSalePrice.Properties.IsFloatValue = false;
-            this.txtSalePrice.Properties.Mask.EditMask = "N00";
-            this.txtSalePrice.Properties.MaxValue = new decimal(new int[] {
-            9999,
-            0,
-            0,
-            0});
+            this.txtSalePrice.Properties.Mask.EditMask = "#,##0.##";
             this.txtSalePrice.Size = new System.Drawing.Size(300, 28);
             this.txtSalePrice.TabIndex = 5;
             // 
@@ -357,13 +353,10 @@
             this.txtRetailPrice.Properties.Appearance.Options.UseFont = true;
             this.txtRetailPrice.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.txtRetailPrice.Properties.DisplayFormat.FormatString = "#,##0.##";
+            this.txtRetailPrice.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
             this.txtRetailPrice.Properties.IsFloatValue = false;
-            this.txtRetailPrice.Properties.Mask.EditMask = "N00";
-            this.txtRetailPrice.Properties.MaxValue = new decimal(new int[] {
-            9999,
-            0,
-            0,
-            0});
+            this.txtRetailPrice.Properties.Mask.EditMask = "#,##0.##";
             this.txtRetailPrice.Size = new System.Drawing.Size(300, 28);
             this.txtRetailPrice.TabIndex = 6;
             // 
@@ -378,7 +371,7 @@
             this.labelControl9.TabIndex = 26;
             this.labelControl9.Text = "Giá bán lẻ";
             // 
-            // frmInventoryAddEdit
+            // frmProductAddEdit
             // 
             this.Appearance.Options.UseFont = true;
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -388,10 +381,10 @@
             this.Controls.Add(this.labelControl9);
             this.Controls.Add(this.txtSalePrice);
             this.Controls.Add(this.labelControl6);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.cbbWarehouse);
+            this.Controls.Add(this.btnAddCategory);
+            this.Controls.Add(this.cbbCategory);
             this.Controls.Add(this.labelControl5);
-            this.Controls.Add(this.btnAddPartNumber);
+            this.Controls.Add(this.btnAddUnit);
             this.Controls.Add(this.cbbUnit);
             this.Controls.Add(this.labelControl2);
             this.Controls.Add(this.txtItemName);
@@ -411,10 +404,10 @@
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "frmInventoryAddEdit";
+            this.Name = "frmProductAddEdit";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Hàng hóa";
-            this.Load += new System.EventHandler(this.frmInventoryAddEdit_Load);
+            this.Load += new System.EventHandler(this.frmProductAddEdit_Load);
             ((System.ComponentModel.ISupportInitialize)(this.txtItemCode.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
             this.panelControl2.ResumeLayout(false);
@@ -444,11 +437,11 @@
         private DevExpress.XtraEditors.LabelControl labelControl3;
         private DevExpress.XtraEditors.TextEdit txtItemName;
         private DevExpress.XtraEditors.LabelControl labelControl4;
-        private System.Windows.Forms.Button btnAddPartNumber;
+        private System.Windows.Forms.Button btnAddUnit;
         private System.Windows.Forms.ComboBox cbbUnit;
         private DevExpress.XtraEditors.LabelControl labelControl2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.ComboBox cbbWarehouse;
+        private System.Windows.Forms.Button btnAddCategory;
+        private System.Windows.Forms.ComboBox cbbCategory;
         private DevExpress.XtraEditors.LabelControl labelControl5;
         private DevExpress.XtraEditors.SpinEdit txtSalePrice;
         private DevExpress.XtraEditors.LabelControl labelControl6;

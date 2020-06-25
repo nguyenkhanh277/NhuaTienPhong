@@ -1,37 +1,29 @@
 using System;
 using System.Collections.ObjectModel;
-using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace NhuaTienPhong.Core.Domain
 {
-    public class Inventory : Base
+    public class Product : Base
     {
         #region Fields
-        [Key, Column(Order = 0)]
-        public string WarehouseId { get; set; }
-        [Key, Column(Order = 1)]
-        public string ProductId { get; set; }
-        public float RemainVirtual { get; set; }
-        public float RemainActual { get; set; }
-        [NotMapped]
-        public string WarehouseName { get; set; }
+        public string Id { get; set; }
+        public string CategoryId { get; set; }
         [NotMapped]
         public string CategoryName { get; set; }
-        [NotMapped]
         public string ItemCode { get; set; }
-        [NotMapped]
         public string ItemName { get; set; }
+        public string UnitId { get; set; }
         [NotMapped]
         public string UnitName { get; set; }
-        [NotMapped]
         public string SKU { get; set; }
-        [NotMapped]
+        public float RemainVirtual { get; set; }
+        public float RemainActual { get; set; }
         public float ImportPrice { get; set; }
-        [NotMapped]
         public float SalePrice { get; set; }
-        [NotMapped]
         public float RetailPrice { get; set; }
+        public string Note { get; set; }
+        public GlobalConstants.StatusValue Status { get; set; }
         #endregion
     }
 }

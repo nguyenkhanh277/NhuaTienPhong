@@ -79,10 +79,6 @@ namespace NhuaTienPhong.View.Home
             btnConfirmOrder.Caption = LanguageTranslate.ChangeLanguageText(btnConfirmOrder.Caption);
             btnSyncVsBravo.Caption = LanguageTranslate.ChangeLanguageText(btnSyncVsBravo.Caption);
 
-            btnProductReportOK.Caption = LanguageTranslate.ChangeLanguageText(btnProductReportOK.Caption);
-            btnProductReportNG.Caption = LanguageTranslate.ChangeLanguageText(btnProductReportNG.Caption);
-            btnReportSyntheticRegistBarcode.Caption = LanguageTranslate.ChangeLanguageText(btnReportSyntheticRegistBarcode.Caption);
-            btnReportSyntheticProductionPlan.Caption = LanguageTranslate.ChangeLanguageText(btnReportSyntheticProductionPlan.Caption);
             rbpHeThong.Text = LanguageTranslate.ChangeLanguageText(rbpHeThong.Text);
             rbpDanhMuc.Text = LanguageTranslate.ChangeLanguageText(rbpDanhMuc.Text);
             rbpChucNang.Text = LanguageTranslate.ChangeLanguageText(rbpChucNang.Text);
@@ -109,11 +105,6 @@ namespace NhuaTienPhong.View.Home
             btnListProcessing.Enabled = _userRepository.CheckPermission(GlobalConstants.username, "ListProcessing", "View");
             btnConfirmOrder.Enabled = _userRepository.CheckPermission(GlobalConstants.username, "ConfirmOrder", "View");
             btnSyncVsBravo.Enabled = _userRepository.CheckPermission(GlobalConstants.username, "SyncVsBravo", "View");
-
-            btnProductReportOK.Enabled = _userRepository.CheckPermission(GlobalConstants.username, "QuantityOfProductsOK", "View");
-            btnProductReportNG.Enabled = _userRepository.CheckPermission(GlobalConstants.username, "QuantityOfProductsNG", "View");
-            btnReportSyntheticRegistBarcode.Enabled = _userRepository.CheckPermission(GlobalConstants.username, "ReportSyntheticRegistBarcode", "View");
-            btnReportSyntheticProductionPlan.Enabled = _userRepository.CheckPermission(GlobalConstants.username, "ReportSyntheticProductionPlan", "View");
         }
 
         private XtraForm CheckExist(Type fType)

@@ -34,8 +34,10 @@
   </PropertyGroup>
   <PropertyGroup />
   <PropertyGroup>
-    <ApplicationIcon>icon.ico</ApplicationIcon>
+    <ApplicationIcon>
+    </ApplicationIcon>
   </PropertyGroup>
+  <PropertyGroup />
   <ItemGroup>
     <Reference Include="DevExpress.BonusSkins.v19.1, Version=19.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -105,7 +107,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Core\Domain\Category.cs" />
     <Compile Include="Core\Domain\Base.cs" />
+    <Compile Include="Core\Domain\Product.cs" />
     <Compile Include="Core\Domain\Inventory.cs" />
     <Compile Include="Core\Domain\LanguageLibrary.cs" />
     <Compile Include="Core\Domain\ProgramFunctionAuthority.cs" />
@@ -126,6 +130,8 @@
     <Compile Include="Core\Helper\Logger.cs" />
     <Compile Include="Core\Helper\SecurityHelper.cs" />
     <Compile Include="Core\Repositories\IRepository.cs" />
+    <Compile Include="Persistence\Repositories\CategoryRepository.cs" />
+    <Compile Include="Persistence\Repositories\ProductRepository.cs" />
     <Compile Include="Persistence\Repositories\LanguageLibraryRepository.cs" />
     <Compile Include="Persistence\Repositories\ProgramFunctionAuthorityRepository.cs" />
     <Compile Include="Persistence\Repositories\AuthorityGroupRepository.cs" />
@@ -140,17 +146,29 @@
     <Compile Include="Persistence\Repositories\Repository.cs" />
     <Compile Include="Persistence\Repositories\ProgramFunctionMasterRepository.cs" />
     <Compile Include="Persistence\Repositories\UserRepository.cs" />
-    <Compile Include="View\Inventorys\frmInventory.cs">
+    <Compile Include="View\Categorys\frmCategory.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\Inventorys\frmInventory.Designer.cs">
-      <DependentUpon>frmInventory.cs</DependentUpon>
+    <Compile Include="View\Categorys\frmCategory.Designer.cs">
+      <DependentUpon>frmCategory.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\Inventorys\frmInventoryAddEdit.cs">
+    <Compile Include="View\Categorys\frmCategoryAddEdit.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\Inventorys\frmInventoryAddEdit.Designer.cs">
-      <DependentUpon>frmInventoryAddEdit.cs</DependentUpon>
+    <Compile Include="View\Categorys\frmCategoryAddEdit.Designer.cs">
+      <DependentUpon>frmCategoryAddEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Products\frmProduct.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Products\frmProduct.Designer.cs">
+      <DependentUpon>frmProduct.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Products\frmProductAddEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Products\frmProductAddEdit.Designer.cs">
+      <DependentUpon>frmProductAddEdit.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Cars\frmCar.cs">
       <SubType>Form</SubType>
@@ -163,6 +181,12 @@
     </Compile>
     <Compile Include="View\Cars\frmCarAddEdit.Designer.cs">
       <DependentUpon>frmCarAddEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Orders\frmRegisterOrder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Orders\frmRegisterOrder.Designer.cs">
+      <DependentUpon>frmRegisterOrder.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Warehouses\frmWarehouse.cs">
       <SubType>Form</SubType>
@@ -284,17 +308,26 @@
     <Compile Include="Persistence\UnitOfWork.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="View\Inventorys\frmInventory.resx">
-      <DependentUpon>frmInventory.cs</DependentUpon>
+    <EmbeddedResource Include="View\Categorys\frmCategory.resx">
+      <DependentUpon>frmCategory.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\Inventorys\frmInventoryAddEdit.resx">
-      <DependentUpon>frmInventoryAddEdit.cs</DependentUpon>
+    <EmbeddedResource Include="View\Categorys\frmCategoryAddEdit.resx">
+      <DependentUpon>frmCategoryAddEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Products\frmProduct.resx">
+      <DependentUpon>frmProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Products\frmProductAddEdit.resx">
+      <DependentUpon>frmProductAddEdit.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Cars\frmCar.resx">
       <DependentUpon>frmCar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Cars\frmCarAddEdit.resx">
       <DependentUpon>frmCarAddEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Orders\frmRegisterOrder.resx">
+      <DependentUpon>frmRegisterOrder.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Warehouses\frmWarehouse.resx">
       <DependentUpon>frmWarehouse.cs</DependentUpon>
@@ -378,17 +411,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Persistence\EntityConfigurations\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="icon.ico" />
-    <None Include="image\Agency.png" />
-    <None Include="image\Warehouse.png" />
-    <None Include="image\Unit.png" />
-    <None Include="image\Shop.png" />
-    <None Include="image\Inventory.png" />
-    <None Include="image\Car.png" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

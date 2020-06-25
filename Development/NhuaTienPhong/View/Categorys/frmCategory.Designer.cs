@@ -1,6 +1,6 @@
-﻿namespace NhuaTienPhong.View.Inventorys
+﻿namespace NhuaTienPhong.View.Categorys
 {
-    partial class frmInventory
+    partial class frmCategory
     {
         /// <summary>
         /// Required designer variable.
@@ -38,7 +38,7 @@
             this.viewDuLieu = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.Id = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemMemoEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemMemoEdit();
-            this.InventoryName = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.CategoryName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.Note = new DevExpress.XtraGrid.Columns.GridColumn();
             this.Status = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemCheckEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
@@ -154,7 +154,7 @@
             this.viewDuLieu.ColumnPanelRowHeight = 40;
             this.viewDuLieu.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.Id,
-            this.InventoryName,
+            this.CategoryName,
             this.Note,
             this.Status});
             this.viewDuLieu.DetailHeight = 284;
@@ -194,25 +194,25 @@
             // 
             this.repositoryItemMemoEdit1.Name = "repositoryItemMemoEdit1";
             // 
-            // InventoryName
+            // CategoryName
             // 
-            this.InventoryName.AppearanceCell.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.InventoryName.AppearanceCell.Options.UseFont = true;
-            this.InventoryName.AppearanceCell.Options.UseTextOptions = true;
-            this.InventoryName.AppearanceCell.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
-            this.InventoryName.AppearanceHeader.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.InventoryName.AppearanceHeader.Options.UseFont = true;
-            this.InventoryName.AppearanceHeader.Options.UseTextOptions = true;
-            this.InventoryName.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.InventoryName.Caption = "Đại lý";
-            this.InventoryName.ColumnEdit = this.repositoryItemMemoEdit1;
-            this.InventoryName.FieldName = "InventoryName";
-            this.InventoryName.MaxWidth = 200;
-            this.InventoryName.MinWidth = 200;
-            this.InventoryName.Name = "InventoryName";
-            this.InventoryName.Visible = true;
-            this.InventoryName.VisibleIndex = 0;
-            this.InventoryName.Width = 200;
+            this.CategoryName.AppearanceCell.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.CategoryName.AppearanceCell.Options.UseFont = true;
+            this.CategoryName.AppearanceCell.Options.UseTextOptions = true;
+            this.CategoryName.AppearanceCell.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.CategoryName.AppearanceHeader.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.CategoryName.AppearanceHeader.Options.UseFont = true;
+            this.CategoryName.AppearanceHeader.Options.UseTextOptions = true;
+            this.CategoryName.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.CategoryName.Caption = "Nhóm hàng";
+            this.CategoryName.ColumnEdit = this.repositoryItemMemoEdit1;
+            this.CategoryName.FieldName = "CategoryName";
+            this.CategoryName.MaxWidth = 200;
+            this.CategoryName.MinWidth = 200;
+            this.CategoryName.Name = "CategoryName";
+            this.CategoryName.Visible = true;
+            this.CategoryName.VisibleIndex = 0;
+            this.CategoryName.Width = 200;
             // 
             // Note
             // 
@@ -280,7 +280,7 @@
             this.panelControl1.Size = new System.Drawing.Size(1290, 50);
             this.panelControl1.TabIndex = 0;
             // 
-            // frmInventory
+            // frmCategory
             // 
             this.Appearance.Options.UseFont = true;
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -290,11 +290,11 @@
             this.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Name = "frmInventory";
+            this.Name = "frmCategory";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Đại lý";
+            this.Text = "Nhóm hàng";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.Load += new System.EventHandler(this.frmInventory_Load);
+            this.Load += new System.EventHandler(this.frmCategory_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDuLieu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.viewDuLieu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemMemoEdit1)).EndInit();
@@ -321,7 +321,7 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemMemoEdit repositoryItemMemoEdit1;
         private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit1;
         private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit repositoryItemButtonEdit1;
-        private DevExpress.XtraGrid.Columns.GridColumn InventoryName;
+        private DevExpress.XtraGrid.Columns.GridColumn CategoryName;
         private DevExpress.XtraGrid.Columns.GridColumn Note;
         private DevExpress.XtraEditors.PanelControl panelControl1;
         private DevExpress.XtraGrid.Columns.GridColumn Status;

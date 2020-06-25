@@ -1154,7 +1154,7 @@ namespace NhuaTienPhong.Migrations
                 new ProgramFunctionMaster
                 {
                     Id = Guid.NewGuid().ToString(),
-                    ProgramName = "PartNumber",
+                    ProgramName = "Agency",
                     FunctionName = "View",
                     Explanation = "",
                     Status = Core.GlobalConstants.StatusValue.Using,
@@ -1164,7 +1164,7 @@ namespace NhuaTienPhong.Migrations
                 new ProgramFunctionMaster
                 {
                     Id = Guid.NewGuid().ToString(),
-                    ProgramName = "Machine",
+                    ProgramName = "Car",
                     FunctionName = "View",
                     Explanation = "",
                     Status = Core.GlobalConstants.StatusValue.Using,
@@ -1174,7 +1174,7 @@ namespace NhuaTienPhong.Migrations
                 new ProgramFunctionMaster
                 {
                     Id = Guid.NewGuid().ToString(),
-                    ProgramName = "Shift",
+                    ProgramName = "Warehouse",
                     FunctionName = "View",
                     Explanation = "",
                     Status = Core.GlobalConstants.StatusValue.Using,
@@ -1184,7 +1184,7 @@ namespace NhuaTienPhong.Migrations
                 new ProgramFunctionMaster
                 {
                     Id = Guid.NewGuid().ToString(),
-                    ProgramName = "Mold",
+                    ProgramName = "Unit",
                     FunctionName = "View",
                     Explanation = "",
                     Status = Core.GlobalConstants.StatusValue.Using,
@@ -1194,7 +1194,7 @@ namespace NhuaTienPhong.Migrations
                 new ProgramFunctionMaster
                 {
                     Id = Guid.NewGuid().ToString(),
-                    ProgramName = "RegistBarcode",
+                    ProgramName = "Inventory",
                     FunctionName = "View",
                     Explanation = "",
                     Status = Core.GlobalConstants.StatusValue.Using,
@@ -1204,7 +1204,7 @@ namespace NhuaTienPhong.Migrations
                 new ProgramFunctionMaster
                 {
                     Id = Guid.NewGuid().ToString(),
-                    ProgramName = "ProductionPlan",
+                    ProgramName = "RegistOrder",
                     FunctionName = "View",
                     Explanation = "",
                     Status = Core.GlobalConstants.StatusValue.Using,
@@ -1214,7 +1214,7 @@ namespace NhuaTienPhong.Migrations
                 new ProgramFunctionMaster
                 {
                     Id = Guid.NewGuid().ToString(),
-                    ProgramName = "ScanBarcode",
+                    ProgramName = "ProcessingOrder",
                     FunctionName = "View",
                     Explanation = "",
                     Status = Core.GlobalConstants.StatusValue.Using,
@@ -1224,7 +1224,7 @@ namespace NhuaTienPhong.Migrations
                 new ProgramFunctionMaster
                 {
                     Id = Guid.NewGuid().ToString(),
-                    ProgramName = "ProductionHistory",
+                    ProgramName = "MergeCar",
                     FunctionName = "View",
                     Explanation = "",
                     Status = Core.GlobalConstants.StatusValue.Using,
@@ -1234,7 +1234,7 @@ namespace NhuaTienPhong.Migrations
                 new ProgramFunctionMaster
                 {
                     Id = Guid.NewGuid().ToString(),
-                    ProgramName = "QuantityOfProductsOK",
+                    ProgramName = "ListProcessing",
                     FunctionName = "View",
                     Explanation = "",
                     Status = Core.GlobalConstants.StatusValue.Using,
@@ -1244,7 +1244,7 @@ namespace NhuaTienPhong.Migrations
                 new ProgramFunctionMaster
                 {
                     Id = Guid.NewGuid().ToString(),
-                    ProgramName = "QuantityOfProductsNG",
+                    ProgramName = "ConfirmOrder",
                     FunctionName = "View",
                     Explanation = "",
                     Status = Core.GlobalConstants.StatusValue.Using,
@@ -1254,17 +1254,7 @@ namespace NhuaTienPhong.Migrations
                 new ProgramFunctionMaster
                 {
                     Id = Guid.NewGuid().ToString(),
-                    ProgramName = "ReportSyntheticRegistBarcode",
-                    FunctionName = "View",
-                    Explanation = "",
-                    Status = Core.GlobalConstants.StatusValue.Using,
-                    CreatedAt = DateTime.Now,
-                    CreatedBy = "Administrator"
-                },
-                new ProgramFunctionMaster
-                {
-                    Id = Guid.NewGuid().ToString(),
-                    ProgramName = "ReportSyntheticProductionPlan",
+                    ProgramName = "SyncVsBravo",
                     FunctionName = "View",
                     Explanation = "",
                     Status = Core.GlobalConstants.StatusValue.Using,
@@ -1311,7 +1301,7 @@ namespace NhuaTienPhong.Migrations
                 new ProgramFunctionAuthority
                 {
                     Id = Guid.NewGuid().ToString(),
-                    ProgramName = "PartNumber",
+                    ProgramName = "Agency",
                     FunctionName = "View",
                     AuthorityGroupID = authorityGroup1,
                     CreatedAt = DateTime.Now,
@@ -1320,7 +1310,7 @@ namespace NhuaTienPhong.Migrations
                 new ProgramFunctionAuthority
                 {
                     Id = Guid.NewGuid().ToString(),
-                    ProgramName = "Machine",
+                    ProgramName = "Car",
                     FunctionName = "View",
                     AuthorityGroupID = authorityGroup1,
                     CreatedAt = DateTime.Now,
@@ -1329,7 +1319,7 @@ namespace NhuaTienPhong.Migrations
                 new ProgramFunctionAuthority
                 {
                     Id = Guid.NewGuid().ToString(),
-                    ProgramName = "Shift",
+                    ProgramName = "Warehouse",
                     FunctionName = "View",
                     AuthorityGroupID = authorityGroup1,
                     CreatedAt = DateTime.Now,
@@ -1338,7 +1328,7 @@ namespace NhuaTienPhong.Migrations
                 new ProgramFunctionAuthority
                 {
                     Id = Guid.NewGuid().ToString(),
-                    ProgramName = "Mold",
+                    ProgramName = "Unit",
                     FunctionName = "View",
                     AuthorityGroupID = authorityGroup1,
                     CreatedAt = DateTime.Now,
@@ -1347,7 +1337,7 @@ namespace NhuaTienPhong.Migrations
                 new ProgramFunctionAuthority
                 {
                     Id = Guid.NewGuid().ToString(),
-                    ProgramName = "RegisterPrintBarcode",
+                    ProgramName = "Inventory",
                     FunctionName = "View",
                     AuthorityGroupID = authorityGroup1,
                     CreatedAt = DateTime.Now,
@@ -1356,7 +1346,7 @@ namespace NhuaTienPhong.Migrations
                 new ProgramFunctionAuthority
                 {
                     Id = Guid.NewGuid().ToString(),
-                    ProgramName = "ProductionPlan",
+                    ProgramName = "RegistOrder",
                     FunctionName = "View",
                     AuthorityGroupID = authorityGroup1,
                     CreatedAt = DateTime.Now,
@@ -1365,7 +1355,7 @@ namespace NhuaTienPhong.Migrations
                 new ProgramFunctionAuthority
                 {
                     Id = Guid.NewGuid().ToString(),
-                    ProgramName = "ScanBarcode",
+                    ProgramName = "ProcessingOrder",
                     FunctionName = "View",
                     AuthorityGroupID = authorityGroup1,
                     CreatedAt = DateTime.Now,
@@ -1374,7 +1364,7 @@ namespace NhuaTienPhong.Migrations
                 new ProgramFunctionAuthority
                 {
                     Id = Guid.NewGuid().ToString(),
-                    ProgramName = "HistoryProduct",
+                    ProgramName = "MergeCar",
                     FunctionName = "View",
                     AuthorityGroupID = authorityGroup1,
                     CreatedAt = DateTime.Now,
@@ -1383,7 +1373,7 @@ namespace NhuaTienPhong.Migrations
                 new ProgramFunctionAuthority
                 {
                     Id = Guid.NewGuid().ToString(),
-                    ProgramName = "QuantityOfProductsOK",
+                    ProgramName = "ListProcessing",
                     FunctionName = "View",
                     AuthorityGroupID = authorityGroup1,
                     CreatedAt = DateTime.Now,
@@ -1392,7 +1382,7 @@ namespace NhuaTienPhong.Migrations
                 new ProgramFunctionAuthority
                 {
                     Id = Guid.NewGuid().ToString(),
-                    ProgramName = "QuantityOfProductsNG",
+                    ProgramName = "ConfirmOrder",
                     FunctionName = "View",
                     AuthorityGroupID = authorityGroup1,
                     CreatedAt = DateTime.Now,
@@ -1401,16 +1391,7 @@ namespace NhuaTienPhong.Migrations
                 new ProgramFunctionAuthority
                 {
                     Id = Guid.NewGuid().ToString(),
-                    ProgramName = "ReportSyntheticByBarcode",
-                    FunctionName = "View",
-                    AuthorityGroupID = authorityGroup1,
-                    CreatedAt = DateTime.Now,
-                    CreatedBy = "Administrator"
-                },
-                new ProgramFunctionAuthority
-                {
-                    Id = Guid.NewGuid().ToString(),
-                    ProgramName = "ReportSyntheticByPlan",
+                    ProgramName = "SyncVsBravo",
                     FunctionName = "View",
                     AuthorityGroupID = authorityGroup1,
                     CreatedAt = DateTime.Now,
@@ -1446,7 +1427,7 @@ namespace NhuaTienPhong.Migrations
                 new ProgramFunctionAuthority
                 {
                     Id = Guid.NewGuid().ToString(),
-                    ProgramName = "PartNumber",
+                    ProgramName = "Agency",
                     FunctionName = "View",
                     AuthorityGroupID = authorityGroup2,
                     CreatedAt = DateTime.Now,
@@ -1455,7 +1436,7 @@ namespace NhuaTienPhong.Migrations
                 new ProgramFunctionAuthority
                 {
                     Id = Guid.NewGuid().ToString(),
-                    ProgramName = "Machine",
+                    ProgramName = "Car",
                     FunctionName = "View",
                     AuthorityGroupID = authorityGroup2,
                     CreatedAt = DateTime.Now,
@@ -1464,7 +1445,7 @@ namespace NhuaTienPhong.Migrations
                 new ProgramFunctionAuthority
                 {
                     Id = Guid.NewGuid().ToString(),
-                    ProgramName = "Shift",
+                    ProgramName = "Warehouse",
                     FunctionName = "View",
                     AuthorityGroupID = authorityGroup2,
                     CreatedAt = DateTime.Now,
@@ -1473,7 +1454,7 @@ namespace NhuaTienPhong.Migrations
                 new ProgramFunctionAuthority
                 {
                     Id = Guid.NewGuid().ToString(),
-                    ProgramName = "Mold",
+                    ProgramName = "Unit",
                     FunctionName = "View",
                     AuthorityGroupID = authorityGroup2,
                     CreatedAt = DateTime.Now,
@@ -1482,7 +1463,7 @@ namespace NhuaTienPhong.Migrations
                 new ProgramFunctionAuthority
                 {
                     Id = Guid.NewGuid().ToString(),
-                    ProgramName = "RegistBarcode",
+                    ProgramName = "Inventory",
                     FunctionName = "View",
                     AuthorityGroupID = authorityGroup2,
                     CreatedAt = DateTime.Now,
@@ -1491,7 +1472,7 @@ namespace NhuaTienPhong.Migrations
                 new ProgramFunctionAuthority
                 {
                     Id = Guid.NewGuid().ToString(),
-                    ProgramName = "ProductionPlan",
+                    ProgramName = "RegistOrder",
                     FunctionName = "View",
                     AuthorityGroupID = authorityGroup2,
                     CreatedAt = DateTime.Now,
@@ -1500,7 +1481,7 @@ namespace NhuaTienPhong.Migrations
                 new ProgramFunctionAuthority
                 {
                     Id = Guid.NewGuid().ToString(),
-                    ProgramName = "ScanBarcode",
+                    ProgramName = "ProcessingOrder",
                     FunctionName = "View",
                     AuthorityGroupID = authorityGroup2,
                     CreatedAt = DateTime.Now,
@@ -1509,7 +1490,7 @@ namespace NhuaTienPhong.Migrations
                 new ProgramFunctionAuthority
                 {
                     Id = Guid.NewGuid().ToString(),
-                    ProgramName = "ProductionHistory",
+                    ProgramName = "MergeCar",
                     FunctionName = "View",
                     AuthorityGroupID = authorityGroup2,
                     CreatedAt = DateTime.Now,
@@ -1518,7 +1499,7 @@ namespace NhuaTienPhong.Migrations
                 new ProgramFunctionAuthority
                 {
                     Id = Guid.NewGuid().ToString(),
-                    ProgramName = "QuantityOfProductsOK",
+                    ProgramName = "ListProcessing",
                     FunctionName = "View",
                     AuthorityGroupID = authorityGroup2,
                     CreatedAt = DateTime.Now,
@@ -1527,7 +1508,7 @@ namespace NhuaTienPhong.Migrations
                 new ProgramFunctionAuthority
                 {
                     Id = Guid.NewGuid().ToString(),
-                    ProgramName = "QuantityOfProductsNG",
+                    ProgramName = "ConfirmOrder",
                     FunctionName = "View",
                     AuthorityGroupID = authorityGroup2,
                     CreatedAt = DateTime.Now,
@@ -1536,27 +1517,9 @@ namespace NhuaTienPhong.Migrations
                 new ProgramFunctionAuthority
                 {
                     Id = Guid.NewGuid().ToString(),
-                    ProgramName = "ReportSyntheticRegistBarcode",
+                    ProgramName = "SyncVsBravo",
                     FunctionName = "View",
                     AuthorityGroupID = authorityGroup2,
-                    CreatedAt = DateTime.Now,
-                    CreatedBy = "Administrator"
-                },
-                new ProgramFunctionAuthority
-                {
-                    Id = Guid.NewGuid().ToString(),
-                    ProgramName = "ReportSyntheticProductionPlan",
-                    FunctionName = "View",
-                    AuthorityGroupID = authorityGroup2,
-                    CreatedAt = DateTime.Now,
-                    CreatedBy = "Administrator"
-                },
-                new ProgramFunctionAuthority
-                {
-                    Id = Guid.NewGuid().ToString(),
-                    ProgramName = "ScanBarcode",
-                    FunctionName = "View",
-                    AuthorityGroupID = authorityGroup3,
                     CreatedAt = DateTime.Now,
                     CreatedBy = "Administrator"
                 }
@@ -1607,6 +1570,243 @@ namespace NhuaTienPhong.Migrations
 
             foreach (var userAuthority in userAuthoritys)
                 projectDataContext.UserAuthoritys.AddOrUpdate(a => a.Id, userAuthority);
+            #endregion
+
+
+            #region Add Agency
+            var agencys = new List<Agency>
+            {
+                new Agency
+                {
+                    Id = Guid.NewGuid().ToString(),
+                    AgencyName = "Mặc định",
+                    Status = Core.GlobalConstants.StatusValue.Using,
+                    CreatedAt = DateTime.Now,
+                    CreatedBy = "Administrator"
+                }
+            };
+
+            foreach (var agency in agencys)
+                projectDataContext.Agencys.Add(agency);
+            #endregion
+
+
+            #region Add Car
+            var cars = new List<Car>
+            {
+                new Car
+                {
+                    Id = Guid.NewGuid().ToString(),
+                    CarNumber = "16N-9999",
+                    Driver = "Nguyễn Xuân Trường",
+                    Weight = 0,
+                    Status = Core.GlobalConstants.StatusValue.Using,
+                    CreatedAt = DateTime.Now,
+                    CreatedBy = "Administrator"
+                }
+            };
+
+            foreach (var car in cars)
+                projectDataContext.Cars.Add(car);
+            #endregion
+
+
+            #region Add Warhouse
+            string warehouse0 = "K0";
+            string warehouse1 = "K1";
+            string warehouse2 = "K2";
+            string warehouse3 = "K3";
+            string warehouse4 = "K4";
+            string warehouse5 = "K5";
+            string warehouse6 = "K6";
+            string warehouse7 = "K7";
+            var warehouses = new List<Warehouse>
+            {
+                new Warehouse
+                {
+                    Id = warehouse0,
+                    WarehouseName = "Kho NTP",
+                    Status = Core.GlobalConstants.StatusValue.Using,
+                    CreatedAt = DateTime.Now,
+                    CreatedBy = "Administrator"
+                },
+                new Warehouse
+                {
+                    Id = warehouse1,
+                    WarehouseName = "Kho 1",
+                    Status = Core.GlobalConstants.StatusValue.Using,
+                    CreatedAt = DateTime.Now,
+                    CreatedBy = "Administrator"
+                },
+                new Warehouse
+                {
+                    Id = warehouse2,
+                    WarehouseName = "Kho 2",
+                    Status = Core.GlobalConstants.StatusValue.Using,
+                    CreatedAt = DateTime.Now,
+                    CreatedBy = "Administrator"
+                },
+                new Warehouse
+                {
+                    Id = warehouse3,
+                    WarehouseName = "Kho 3",
+                    Status = Core.GlobalConstants.StatusValue.Using,
+                    CreatedAt = DateTime.Now,
+                    CreatedBy = "Administrator"
+                },
+                new Warehouse
+                {
+                    Id = warehouse4,
+                    WarehouseName = "Kho 4",
+                    Status = Core.GlobalConstants.StatusValue.Using,
+                    CreatedAt = DateTime.Now,
+                    CreatedBy = "Administrator"
+                },
+                new Warehouse
+                {
+                    Id = warehouse5,
+                    WarehouseName = "Kho 5",
+                    Status = Core.GlobalConstants.StatusValue.Using,
+                    CreatedAt = DateTime.Now,
+                    CreatedBy = "Administrator"
+                },
+                new Warehouse
+                {
+                    Id = warehouse6,
+                    WarehouseName = "Kho 6",
+                    Status = Core.GlobalConstants.StatusValue.Using,
+                    CreatedAt = DateTime.Now,
+                    CreatedBy = "Administrator"
+                },
+                new Warehouse
+                {
+                    Id = warehouse7,
+                    WarehouseName = "Kho 7",
+                    Status = Core.GlobalConstants.StatusValue.Using,
+                    CreatedAt = DateTime.Now,
+                    CreatedBy = "Administrator"
+                }
+            };
+
+            foreach (var warehouse in warehouses)
+                projectDataContext.Warehouses.Add(warehouse);
+            #endregion
+
+
+            #region Add Unit
+            string unit1 = Guid.NewGuid().ToString();
+            string unit2 = Guid.NewGuid().ToString();
+            string unit3 = Guid.NewGuid().ToString();
+            var units = new List<Unit>
+            {
+                new Unit
+                {
+                    Id = unit1,
+                    UnitName = "Cái",
+                    Status = Core.GlobalConstants.StatusValue.Using,
+                    CreatedAt = DateTime.Now,
+                    CreatedBy = "Administrator"
+                },
+                new Unit
+                {
+                    Id = unit2,
+                    UnitName = "Chiếc",
+                    Status = Core.GlobalConstants.StatusValue.Using,
+                    CreatedAt = DateTime.Now,
+                    CreatedBy = "Administrator"
+                },
+                new Unit
+                {
+                    Id = unit3,
+                    UnitName = "Hộp",
+                    Status = Core.GlobalConstants.StatusValue.Using,
+                    CreatedAt = DateTime.Now,
+                    CreatedBy = "Administrator"
+                }
+            };
+
+            foreach (var unit in units)
+                projectDataContext.Units.Add(unit);
+            #endregion
+
+
+            #region Add Category
+            string category1 = Guid.NewGuid().ToString();
+            var categorys = new List<Category>
+            {
+                new Category
+                {
+                    Id = category1,
+                    CategoryName = "Mặc định",
+                    Status = Core.GlobalConstants.StatusValue.Using,
+                    CreatedAt = DateTime.Now,
+                    CreatedBy = "Administrator"
+                }
+            };
+
+            foreach (var category in categorys)
+                projectDataContext.Categorys.Add(category);
+            #endregion
+
+
+            #region Add Product
+            string product1 = Guid.NewGuid().ToString();
+            string product2 = Guid.NewGuid().ToString();
+            string product3 = Guid.NewGuid().ToString();
+            var products = new List<Product>
+            {
+                new Product
+                {
+                    Id = Guid.NewGuid().ToString(),
+                    CategoryId = category1,
+                    ItemCode = "K0-00001",
+                    ItemName = "Côn 25",
+                    UnitId = unit1,
+                    RemainActual = 0,
+                    RemainVirtual = 0,
+                    ImportPrice = 10000,
+                    SalePrice = 11000,
+                    RetailPrice = 12000,
+                    Status = Core.GlobalConstants.StatusValue.Using,
+                    CreatedAt = DateTime.Now,
+                    CreatedBy = "Administrator"
+                },
+                new Product
+                {
+                    Id = Guid.NewGuid().ToString(),
+                    CategoryId = category1,
+                    ItemCode = "K0-00002",
+                    ItemName = "Côn 30",
+                    UnitId = unit1,
+                    RemainActual = 0,
+                    RemainVirtual = 0,
+                    ImportPrice = 10000,
+                    SalePrice = 11000,
+                    RetailPrice = 12000,
+                    Status = Core.GlobalConstants.StatusValue.Using,
+                    CreatedAt = DateTime.Now,
+                    CreatedBy = "Administrator"
+                },
+                new Product
+                {
+                    Id = Guid.NewGuid().ToString(),
+                    CategoryId = category1,
+                    ItemCode = "K0-00003",
+                    ItemName = "Côn 40",
+                    UnitId = unit1,
+                    RemainActual = 0,
+                    RemainVirtual = 0,
+                    ImportPrice = 10000,
+                    SalePrice = 11000,
+                    RetailPrice = 12000,
+                    Status = Core.GlobalConstants.StatusValue.Using,
+                    CreatedAt = DateTime.Now,
+                    CreatedBy = "Administrator"
+                }
+            };
+
+            foreach (var product in products)
+                projectDataContext.Products.Add(product);
             #endregion
         }
     }

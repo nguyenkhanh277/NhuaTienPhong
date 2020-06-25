@@ -15,12 +15,12 @@ using NhuaTienPhong.Core.Helper;
 using NhuaTienPhong.Core.Domain;
 using System.Linq.Expressions;
 
-namespace NhuaTienPhong.View.Inventorys
+namespace NhuaTienPhong.View.Orders
 {
-    public partial class frmInventory : DevExpress.XtraEditors.XtraForm
+    public partial class frmRegisterOrder : DevExpress.XtraEditors.XtraForm
     {
         ProjectDataContext _projectDataContext;
-        InventoryRepository _inventoryRepository;
+        AgencyRepository _agencyRepository;
 
         protected override void OnClosing(System.ComponentModel.CancelEventArgs e)
         {
@@ -59,12 +59,12 @@ namespace NhuaTienPhong.View.Inventorys
             return base.ProcessCmdKey(ref msg, keyData);
         }
 
-        public frmInventory()
+        public frmRegisterOrder()
         {
             InitializeComponent();
         }
 
-        private void frmInventory_Load(object sender, EventArgs e)
+        private void frmRegisterOrder_Load(object sender, EventArgs e)
         {
             LanguageTranslate.ChangeLanguageForm(this);
             LanguageTranslate.ChangeLanguageGridView(viewDuLieu);
@@ -74,43 +74,33 @@ namespace NhuaTienPhong.View.Inventorys
         private void Search()
         {
             _projectDataContext = new ProjectDataContext();
-            _inventoryRepository = new InventoryRepository(_projectDataContext);
-            dgvDuLieu.DataSource = _inventoryRepository.GetAll().OrderBy(_ => _.ItemName);
+            _agencyRepository = new AgencyRepository(_projectDataContext);
+            dgvDuLieu.DataSource = _agencyRepository.GetAll().OrderBy(_ => _.AgencyName);
             Control();
         }
 
         private void Control()
         {
-            btnEdit.Enabled = btnDelete.Enabled = btnExcel.Enabled = (viewDuLieu.RowCount > 0);
+            btnSaveOrder.Enabled = btnDelete.Enabled = btnExcel.Enabled = (viewDuLieu.RowCount > 0);
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            frmInventoryAddEdit frm = new frmInventoryAddEdit();
-            frm.ShowDialog();
-            Search();
+
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
-            if (viewDuLieu.RowCount > 0)
-            {
-                frmInventoryAddEdit frm = new frmInventoryAddEdit(viewDuLieu.GetRowCellValue(viewDuLieu.FocusedRowHandle, "Id").ToString());
-                DialogResult dr = frm.ShowDialog();
-                if (dr == DialogResult.OK)
-                {
-                    Search();
-                }
-            }
+
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
             if (viewDuLieu.RowCount > 0 && XtraMessageBox.Show(LanguageTranslate.ChangeLanguageText("Bạn có muốn xóa thông tin này?"), LanguageTranslate.ChangeLanguageText("Xác nhận"), MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                _inventoryRepository.Remove(viewDuLieu.GetRowCellValue(viewDuLieu.FocusedRowHandle, "Id").ToString());
-                UnitOfWork inventoryOfWork = new UnitOfWork(_projectDataContext);
-                int result = inventoryOfWork.Complete();
+                _agencyRepository.Remove(viewDuLieu.GetRowCellValue(viewDuLieu.FocusedRowHandle, "Id").ToString());
+                UnitOfWork agencyOfWork = new UnitOfWork(_projectDataContext);
+                int result = agencyOfWork.Complete();
                 if (result > 0)
                 {
                     Search();
@@ -140,33 +130,17 @@ namespace NhuaTienPhong.View.Inventorys
 
         private void viewDuLieu_KeyDown(object sender, KeyEventArgs e)
         {
-            if (viewDuLieu.RowCount > 0)
-            {
-                if (e.Control && e.KeyCode == Keys.C)
-                {
-                    Clipboard.SetText(viewDuLieu.GetRowCellValue(viewDuLieu.FocusedRowHandle, viewDuLieu.FocusedColumn.Name).ToString());
-                    e.Handled = true;
-                }
-            }
+
         }
 
         private void viewDuLieu_CustomDrawRowIndicator(object sender, DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventArgs e)
         {
-            if (e.RowHandle >= 0)
-                e.Info.DisplayText = (e.RowHandle + 1).ToString();
+
         }
 
         private void viewDuLieu_RowCellStyle(object sender, DevExpress.XtraGrid.Views.Grid.RowCellStyleEventArgs e)
         {
-            if (e.RowHandle >= 0)
-            {
-                DevExpress.XtraGrid.Views.Grid.GridView view = sender as DevExpress.XtraGrid.Views.Grid.GridView;
-                if (view.GetRowCellValue(e.RowHandle, "Status").ToString() == "NoUse")
-                {
-                    e.Appearance.ForeColor = Color.Red;
-                    e.Appearance.Font = new System.Drawing.Font("Segoe UI", 10F, FontStyle.Strikeout);
-                }
-            }
+
         }
     }
 }
