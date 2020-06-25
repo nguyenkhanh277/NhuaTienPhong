@@ -1,23 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Text;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using NhuaTienPhong.Persistence;
-using NhuaTienPhong.Core;
 using NhuaTienPhong.Persistence.Repositories;
 using NhuaTienPhong.Core.Helper;
-using NhuaTienPhong.Core.Domain;
-using System.Linq.Expressions;
 
 namespace NhuaTienPhong.View.Agencys
 {
-    public partial class frmAgency : DevExpress.XtraEditors.XtraForm
+    public partial class frmAgency : XtraForm
     {
         ProjectDataContext _projectDataContext;
         AgencyRepository _agencyRepository;

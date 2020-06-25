@@ -1,22 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using NhuaTienPhong.Persistence;
 using NhuaTienPhong.Persistence.Repositories;
 using NhuaTienPhong.Core.Domain;
-using NhuaTienPhong.Core;
 using NhuaTienPhong.Core.Helper;
 
 namespace NhuaTienPhong.View.LanguageLibrarys
 {
-    public partial class frmLanguageLibraryAddEdit : DevExpress.XtraEditors.XtraForm
+    public partial class frmLanguageLibraryAddEdit : XtraForm
     {
         ProjectDataContext _projectDataContext = new ProjectDataContext();
         LanguageLibraryRepository _languageLibraryRepository;

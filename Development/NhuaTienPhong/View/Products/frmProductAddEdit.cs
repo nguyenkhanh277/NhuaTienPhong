@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using NhuaTienPhong.Persistence;
@@ -16,7 +11,7 @@ using NhuaTienPhong.Core.Helper;
 
 namespace NhuaTienPhong.View.Products
 {
-    public partial class frmProductAddEdit : DevExpress.XtraEditors.XtraForm
+    public partial class frmProductAddEdit : XtraForm
     {
         ProjectDataContext _projectDataContext = new ProjectDataContext();
         ProductRepository _productRepository;
@@ -194,7 +189,6 @@ namespace NhuaTienPhong.View.Products
                 XtraMessageBox.Show(LanguageTranslate.ChangeLanguageText("Lưu thất bại"), LanguageTranslate.ChangeLanguageText("Thông báo"), MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-
         }
 
         private void btnClose_Click(object sender, EventArgs e)

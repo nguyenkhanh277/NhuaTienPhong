@@ -1,5 +1,6 @@
-using System;
+﻿using System;
 using System.Collections.ObjectModel;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace NhuaTienPhong.Core.Domain
 {
@@ -12,6 +13,8 @@ namespace NhuaTienPhong.Core.Domain
         public float Weight { get; set; }
         public string Note { get; set; }
         public GlobalConstants.StatusValue Status { get; set; }
+        [NotMapped]
+        public string Choose = "Chọn";
         #endregion
     }
 }

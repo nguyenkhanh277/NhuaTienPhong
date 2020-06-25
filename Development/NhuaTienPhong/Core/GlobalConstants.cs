@@ -24,7 +24,7 @@ namespace NhuaTienPhong.Core
         public enum StatusValue { NoUse, Using }
         public enum LanguageValue { Vietnamese, English }
         public enum UseCarStatusValue { Agency, Company }
-        public enum ProcessingCarStatusValue { MergeCar, WaitCar }
+        public enum ProcessingCarStatusValue { None, MergeCar, WaitCar }
         public enum ProcessingStatusValue { None, Approved, Reject, MergeOrder }
         #endregion
     }

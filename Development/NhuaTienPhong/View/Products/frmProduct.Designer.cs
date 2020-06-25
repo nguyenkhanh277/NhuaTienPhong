@@ -38,13 +38,13 @@
             this.viewDuLieu = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.Id = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemMemoEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemMemoEdit();
-            this.WarehouseName = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.CategoryName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.ItemCode = new DevExpress.XtraGrid.Columns.GridColumn();
             this.ItemName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.UnitName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.SKU = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.RemainActual = new DevExpress.XtraGrid.Columns.GridColumn();
             this.RemainVirtual = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.RemainActual = new DevExpress.XtraGrid.Columns.GridColumn();
             this.ImportPrice = new DevExpress.XtraGrid.Columns.GridColumn();
             this.SalePrice = new DevExpress.XtraGrid.Columns.GridColumn();
             this.RetailPrice = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -163,7 +163,7 @@
             this.viewDuLieu.ColumnPanelRowHeight = 45;
             this.viewDuLieu.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.Id,
-            this.WarehouseName,
+            this.CategoryName,
             this.ItemCode,
             this.ItemName,
             this.UnitName,
@@ -212,25 +212,26 @@
             // 
             this.repositoryItemMemoEdit1.Name = "repositoryItemMemoEdit1";
             // 
-            // WarehouseName
+            // CategoryName
             // 
-            this.WarehouseName.AppearanceCell.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.WarehouseName.AppearanceCell.Options.UseFont = true;
-            this.WarehouseName.AppearanceCell.Options.UseTextOptions = true;
-            this.WarehouseName.AppearanceCell.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
-            this.WarehouseName.AppearanceHeader.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.WarehouseName.AppearanceHeader.Options.UseFont = true;
-            this.WarehouseName.AppearanceHeader.Options.UseTextOptions = true;
-            this.WarehouseName.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.WarehouseName.Caption = "Kho";
-            this.WarehouseName.ColumnEdit = this.repositoryItemMemoEdit1;
-            this.WarehouseName.FieldName = "WarehouseName";
-            this.WarehouseName.MaxWidth = 70;
-            this.WarehouseName.MinWidth = 70;
-            this.WarehouseName.Name = "WarehouseName";
-            this.WarehouseName.Visible = true;
-            this.WarehouseName.VisibleIndex = 0;
-            this.WarehouseName.Width = 70;
+            this.CategoryName.AppearanceCell.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.CategoryName.AppearanceCell.Options.UseFont = true;
+            this.CategoryName.AppearanceCell.Options.UseTextOptions = true;
+            this.CategoryName.AppearanceCell.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.CategoryName.AppearanceHeader.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.CategoryName.AppearanceHeader.Options.UseFont = true;
+            this.CategoryName.AppearanceHeader.Options.UseTextOptions = true;
+            this.CategoryName.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.CategoryName.AppearanceHeader.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap;
+            this.CategoryName.Caption = "Nhóm hàng";
+            this.CategoryName.ColumnEdit = this.repositoryItemMemoEdit1;
+            this.CategoryName.FieldName = "CategoryName";
+            this.CategoryName.MaxWidth = 70;
+            this.CategoryName.MinWidth = 70;
+            this.CategoryName.Name = "CategoryName";
+            this.CategoryName.Visible = true;
+            this.CategoryName.VisibleIndex = 0;
+            this.CategoryName.Width = 70;
             // 
             // ItemCode
             // 
@@ -310,30 +311,6 @@
             this.SKU.Name = "SKU";
             this.SKU.Width = 100;
             // 
-            // RemainActual
-            // 
-            this.RemainActual.AppearanceCell.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.RemainActual.AppearanceCell.Options.UseFont = true;
-            this.RemainActual.AppearanceCell.Options.UseTextOptions = true;
-            this.RemainActual.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.RemainActual.AppearanceCell.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
-            this.RemainActual.AppearanceHeader.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.RemainActual.AppearanceHeader.Options.UseFont = true;
-            this.RemainActual.AppearanceHeader.Options.UseTextOptions = true;
-            this.RemainActual.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.RemainActual.AppearanceHeader.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap;
-            this.RemainActual.Caption = "SL tổn kho thực NTP";
-            this.RemainActual.ColumnEdit = this.repositoryItemMemoEdit1;
-            this.RemainActual.DisplayFormat.FormatString = "#,##0.##";
-            this.RemainActual.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
-            this.RemainActual.FieldName = "RemainActual";
-            this.RemainActual.MaxWidth = 80;
-            this.RemainActual.MinWidth = 80;
-            this.RemainActual.Name = "RemainActual";
-            this.RemainActual.Visible = true;
-            this.RemainActual.VisibleIndex = 5;
-            this.RemainActual.Width = 80;
-            // 
             // RemainVirtual
             // 
             this.RemainVirtual.AppearanceCell.Font = new System.Drawing.Font("Segoe UI", 10F);
@@ -357,6 +334,30 @@
             this.RemainVirtual.Visible = true;
             this.RemainVirtual.VisibleIndex = 4;
             this.RemainVirtual.Width = 80;
+            // 
+            // RemainActual
+            // 
+            this.RemainActual.AppearanceCell.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.RemainActual.AppearanceCell.Options.UseFont = true;
+            this.RemainActual.AppearanceCell.Options.UseTextOptions = true;
+            this.RemainActual.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.RemainActual.AppearanceCell.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.RemainActual.AppearanceHeader.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.RemainActual.AppearanceHeader.Options.UseFont = true;
+            this.RemainActual.AppearanceHeader.Options.UseTextOptions = true;
+            this.RemainActual.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.RemainActual.AppearanceHeader.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap;
+            this.RemainActual.Caption = "SL tổn kho thực NTP";
+            this.RemainActual.ColumnEdit = this.repositoryItemMemoEdit1;
+            this.RemainActual.DisplayFormat.FormatString = "#,##0.##";
+            this.RemainActual.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
+            this.RemainActual.FieldName = "RemainActual";
+            this.RemainActual.MaxWidth = 80;
+            this.RemainActual.MinWidth = 80;
+            this.RemainActual.Name = "RemainActual";
+            this.RemainActual.Visible = true;
+            this.RemainActual.VisibleIndex = 5;
+            this.RemainActual.Width = 80;
             // 
             // ImportPrice
             // 
@@ -534,7 +535,7 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemMemoEdit repositoryItemMemoEdit1;
         private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit1;
         private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit repositoryItemButtonEdit1;
-        private DevExpress.XtraGrid.Columns.GridColumn WarehouseName;
+        private DevExpress.XtraGrid.Columns.GridColumn CategoryName;
         private DevExpress.XtraGrid.Columns.GridColumn Note;
         private DevExpress.XtraEditors.PanelControl panelControl1;
         private DevExpress.XtraGrid.Columns.GridColumn Status;

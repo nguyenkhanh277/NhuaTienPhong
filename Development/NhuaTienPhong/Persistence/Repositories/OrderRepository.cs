@@ -26,6 +26,7 @@ namespace NhuaTienPhong.Persistence.Repositories
             if (String.IsNullOrEmpty(order.Id))
             {
                 order.Id = GetAutoID();
+                order.Status = GlobalConstants.StatusValue.Using;
                 order.CreatedAt = DateTime.Now;
                 order.CreatedBy = GlobalConstants.username;
                 Add(order);

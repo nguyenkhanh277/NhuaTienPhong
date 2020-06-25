@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using NhuaTienPhong.Persistence;
@@ -16,7 +9,7 @@ using NhuaTienPhong.Core.Helper;
 
 namespace NhuaTienPhong.View.ProgramFunctionMasters
 {
-    public partial class frmProgramFunctionMasterAddEdit : DevExpress.XtraEditors.XtraForm
+    public partial class frmProgramFunctionMasterAddEdit : XtraForm
     {
         ProjectDataContext _projectDataContext = new ProjectDataContext();
         ProgramFunctionMasterRepository _programFunctionMasterRepository;

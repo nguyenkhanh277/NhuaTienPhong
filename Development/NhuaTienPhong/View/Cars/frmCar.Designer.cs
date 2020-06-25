@@ -39,13 +39,14 @@
             this.Id = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemMemoEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemMemoEdit();
             this.CarNumber = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.Driver = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.Weight = new DevExpress.XtraGrid.Columns.GridColumn();
             this.Note = new DevExpress.XtraGrid.Columns.GridColumn();
             this.Status = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemCheckEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.repositoryItemButtonEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
-            this.Weight = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.Driver = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.Choose = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDuLieu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.viewDuLieu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemMemoEdit1)).BeginInit();
@@ -155,6 +156,7 @@
             this.viewDuLieu.Appearance.FocusedCell.Options.UseForeColor = true;
             this.viewDuLieu.ColumnPanelRowHeight = 40;
             this.viewDuLieu.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.Choose,
             this.Id,
             this.CarNumber,
             this.Driver,
@@ -217,6 +219,42 @@
             this.CarNumber.Visible = true;
             this.CarNumber.VisibleIndex = 0;
             this.CarNumber.Width = 200;
+            // 
+            // Driver
+            // 
+            this.Driver.AppearanceCell.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.Driver.AppearanceCell.Options.UseFont = true;
+            this.Driver.AppearanceHeader.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.Driver.AppearanceHeader.Options.UseFont = true;
+            this.Driver.AppearanceHeader.Options.UseTextOptions = true;
+            this.Driver.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.Driver.Caption = "Người lái xe";
+            this.Driver.ColumnEdit = this.repositoryItemMemoEdit1;
+            this.Driver.FieldName = "Driver";
+            this.Driver.MaxWidth = 200;
+            this.Driver.MinWidth = 200;
+            this.Driver.Name = "Driver";
+            this.Driver.Visible = true;
+            this.Driver.VisibleIndex = 1;
+            this.Driver.Width = 200;
+            // 
+            // Weight
+            // 
+            this.Weight.AppearanceCell.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.Weight.AppearanceCell.Options.UseFont = true;
+            this.Weight.AppearanceHeader.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.Weight.AppearanceHeader.Options.UseFont = true;
+            this.Weight.AppearanceHeader.Options.UseTextOptions = true;
+            this.Weight.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.Weight.Caption = "Trọng lượng";
+            this.Weight.ColumnEdit = this.repositoryItemMemoEdit1;
+            this.Weight.FieldName = "Weight";
+            this.Weight.MaxWidth = 100;
+            this.Weight.MinWidth = 100;
+            this.Weight.Name = "Weight";
+            this.Weight.Visible = true;
+            this.Weight.VisibleIndex = 2;
+            this.Weight.Width = 100;
             // 
             // Note
             // 
@@ -284,41 +322,24 @@
             this.panelControl1.Size = new System.Drawing.Size(1290, 50);
             this.panelControl1.TabIndex = 0;
             // 
-            // Weight
+            // Choose
             // 
-            this.Weight.AppearanceCell.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.Weight.AppearanceCell.Options.UseFont = true;
-            this.Weight.AppearanceHeader.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.Weight.AppearanceHeader.Options.UseFont = true;
-            this.Weight.AppearanceHeader.Options.UseTextOptions = true;
-            this.Weight.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.Weight.Caption = "Trọng lượng";
-            this.Weight.ColumnEdit = this.repositoryItemMemoEdit1;
-            this.Weight.FieldName = "Weight";
-            this.Weight.MaxWidth = 100;
-            this.Weight.MinWidth = 100;
-            this.Weight.Name = "Weight";
-            this.Weight.Visible = true;
-            this.Weight.VisibleIndex = 2;
-            this.Weight.Width = 100;
-            // 
-            // Driver
-            // 
-            this.Driver.AppearanceCell.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.Driver.AppearanceCell.Options.UseFont = true;
-            this.Driver.AppearanceHeader.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.Driver.AppearanceHeader.Options.UseFont = true;
-            this.Driver.AppearanceHeader.Options.UseTextOptions = true;
-            this.Driver.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.Driver.Caption = "Người lái xe";
-            this.Driver.ColumnEdit = this.repositoryItemMemoEdit1;
-            this.Driver.FieldName = "Driver";
-            this.Driver.MaxWidth = 200;
-            this.Driver.MinWidth = 200;
-            this.Driver.Name = "Driver";
-            this.Driver.Visible = true;
-            this.Driver.VisibleIndex = 1;
-            this.Driver.Width = 200;
+            this.Choose.AppearanceCell.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.Choose.AppearanceCell.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(150)))), ((int)(((byte)(250)))));
+            this.Choose.AppearanceCell.Options.UseFont = true;
+            this.Choose.AppearanceCell.Options.UseForeColor = true;
+            this.Choose.AppearanceCell.Options.UseTextOptions = true;
+            this.Choose.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.Choose.AppearanceHeader.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.Choose.AppearanceHeader.Options.UseFont = true;
+            this.Choose.AppearanceHeader.Options.UseTextOptions = true;
+            this.Choose.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.Choose.Caption = "Chọn";
+            this.Choose.FieldName = "Choose";
+            this.Choose.MaxWidth = 50;
+            this.Choose.MinWidth = 50;
+            this.Choose.Name = "Choose";
+            this.Choose.Width = 50;
             // 
             // frmCar
             // 
@@ -367,5 +388,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn Status;
         private DevExpress.XtraGrid.Columns.GridColumn Driver;
         private DevExpress.XtraGrid.Columns.GridColumn Weight;
+        private DevExpress.XtraGrid.Columns.GridColumn Choose;
     }
 }

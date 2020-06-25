@@ -1,23 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Text;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using NhuaTienPhong.Persistence;
-using NhuaTienPhong.Core;
 using NhuaTienPhong.Persistence.Repositories;
 using NhuaTienPhong.Core.Helper;
-using NhuaTienPhong.Core.Domain;
-using System.Linq.Expressions;
 
 namespace NhuaTienPhong.View.Cars
 {
-    public partial class frmCar : DevExpress.XtraEditors.XtraForm
+    public partial class frmCar : XtraForm
     {
         ProjectDataContext _projectDataContext;
         CarRepository _carRepository;
@@ -62,6 +55,13 @@ namespace NhuaTienPhong.View.Cars
         public frmCar()
         {
             InitializeComponent();
+        }
+
+        public frmCar(bool choose)
+        {
+            InitializeComponent();
+            viewDuLieu.Columns["Choose"].Visible = choose;
+            viewDuLieu.Columns["Choose"].VisibleIndex = 0;
         }
 
         private void frmCar_Load(object sender, EventArgs e)

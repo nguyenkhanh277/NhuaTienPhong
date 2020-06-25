@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Text;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using NhuaTienPhong.Persistence;
@@ -14,12 +10,10 @@ using NhuaTienPhong.Persistence.Repositories;
 using NhuaTienPhong.View.AuthorityGroups;
 using NhuaTienPhong.View.ProgramFunctionMasters;
 using NhuaTienPhong.Core.Helper;
-using System.Linq.Expressions;
-using NhuaTienPhong.Core.Domain;
 
 namespace NhuaTienPhong.View.Users
 {
-    public partial class frmUsers : DevExpress.XtraEditors.XtraForm
+    public partial class frmUsers : XtraForm
     {
         ProjectDataContext _projectDataContext;
         UserRepository _userRepository;

@@ -81,9 +81,11 @@ namespace NhuaTienPhong.Persistence.Repositories
                 {
                     product = new Product();
                     product.Id = item.x.Id;
+                    product.CategoryId = item.x.CategoryId;
                     product.CategoryName = item.y.CategoryName;
                     product.ItemCode = item.x.ItemCode;
                     product.ItemName = item.x.ItemName;
+                    product.UnitId = item.x.UnitId;
                     product.UnitName = item.z.UnitName;
                     product.SKU = item.x.SKU;
                     product.RemainActual = item.x.RemainActual;

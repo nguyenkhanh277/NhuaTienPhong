@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using NhuaTienPhong.Persistence;
@@ -16,7 +11,7 @@ using NhuaTienPhong.Core.Helper;
 
 namespace NhuaTienPhong.View.Users
 {
-    public partial class frmUsersAddEdit : DevExpress.XtraEditors.XtraForm
+    public partial class frmUsersAddEdit : XtraForm
     {
         ProjectDataContext _projectDataContext = new ProjectDataContext();
         UserRepository _userRepository;

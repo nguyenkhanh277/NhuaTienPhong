@@ -1,23 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
-using NhuaTienPhong.Persistence;
-using NhuaTienPhong.Persistence.Repositories;
 using NhuaTienPhong.Core;
 using NhuaTienPhong.Core.Helper;
-using NhuaTienPhong.Core.Domain;
 using Registration.Core.License;
 
 namespace NhuaTienPhong.View.Home
 {
-    public partial class frmLicenses : DevExpress.XtraEditors.XtraForm
+    public partial class frmLicenses : XtraForm
     {
         public frmLicenses()
         {

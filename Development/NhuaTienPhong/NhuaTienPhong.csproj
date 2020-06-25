@@ -130,6 +130,10 @@
     <Compile Include="Core\Helper\Logger.cs" />
     <Compile Include="Core\Helper\SecurityHelper.cs" />
     <Compile Include="Core\Repositories\IRepository.cs" />
+    <Compile Include="Migrations\202006251621588_initial-database.cs" />
+    <Compile Include="Migrations\202006251621588_initial-database.Designer.cs">
+      <DependentUpon>202006251621588_initial-database.cs</DependentUpon>
+    </Compile>
     <Compile Include="Persistence\Repositories\CategoryRepository.cs" />
     <Compile Include="Persistence\Repositories\ProductRepository.cs" />
     <Compile Include="Persistence\Repositories\LanguageLibraryRepository.cs" />
@@ -137,7 +141,6 @@
     <Compile Include="Persistence\Repositories\AuthorityGroupRepository.cs" />
     <Compile Include="Persistence\Repositories\CarRepository.cs" />
     <Compile Include="Persistence\Repositories\AgencyRepository.cs" />
-    <Compile Include="Persistence\Repositories\InventoryRepository.cs" />
     <Compile Include="Persistence\Repositories\OrderRepository.cs" />
     <Compile Include="Persistence\Repositories\OrderDetailRepository.cs" />
     <Compile Include="Persistence\Repositories\WarehouseRepository.cs" />
@@ -308,6 +311,9 @@
     <Compile Include="Persistence\UnitOfWork.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Migrations\202006251621588_initial-database.resx">
+      <DependentUpon>202006251621588_initial-database.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\Categorys\frmCategory.resx">
       <DependentUpon>frmCategory.cs</DependentUpon>
     </EmbeddedResource>
@@ -411,6 +417,8 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="image\Category.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

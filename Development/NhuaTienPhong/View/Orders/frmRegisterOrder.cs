@@ -1,26 +1,25 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using NhuaTienPhong.Persistence;
-using NhuaTienPhong.Core;
 using NhuaTienPhong.Persistence.Repositories;
 using NhuaTienPhong.Core.Helper;
 using NhuaTienPhong.Core.Domain;
-using System.Linq.Expressions;
+using NhuaTienPhong.Core;
 
 namespace NhuaTienPhong.View.Orders
 {
-    public partial class frmRegisterOrder : DevExpress.XtraEditors.XtraForm
+    public partial class frmRegisterOrder : XtraForm
     {
         ProjectDataContext _projectDataContext;
-        AgencyRepository _agencyRepository;
+        OrderRepository _orderRepository;
+        OrderDetailRepository _orderDetailRepository;
+        ProductRepository _productRepository;
+
+        DataTable _orderDetail = new DataTable();
+        bool _changed = true;
 
         protected override void OnClosing(System.ComponentModel.CancelEventArgs e)
         {
@@ -33,27 +32,17 @@ namespace NhuaTienPhong.View.Orders
             KeyEventArgs e = new KeyEventArgs(keyData);
             if (e.KeyCode == Keys.F1)
             {
-                btnAdd_Click(null, null);
+                btnSendOrder_Click(null, null);
                 return true;
             }
             else if (e.KeyCode == Keys.F2)
             {
-                btnEdit_Click(null, null);
-                return true;
-            }
-            else if (e.KeyCode == Keys.F3)
-            {
-                btnDelete_Click(null, null);
-                return true;
-            }
-            else if (e.KeyCode == Keys.F4)
-            {
-                btnExcel_Click(null, null);
+                btnSaveOrder_Click(null, null);
                 return true;
             }
             else if (e.KeyCode == Keys.F5)
             {
-                btnRefresh_Click(null, null);
+                btnSearchProduct_Click(null, null);
                 return true;
             }
             return base.ProcessCmdKey(ref msg, keyData);
@@ -68,59 +57,181 @@ namespace NhuaTienPhong.View.Orders
         {
             LanguageTranslate.ChangeLanguageForm(this);
             LanguageTranslate.ChangeLanguageGridView(viewDuLieu);
-            Search();
-        }
-
-        private void Search()
-        {
-            _projectDataContext = new ProjectDataContext();
-            _agencyRepository = new AgencyRepository(_projectDataContext);
-            dgvDuLieu.DataSource = _agencyRepository.GetAll().OrderBy(_ => _.AgencyName);
-            Control();
+            SearchProduct();
+            Clear();
         }
 
         private void Control()
         {
-            btnSaveOrder.Enabled = btnDelete.Enabled = btnExcel.Enabled = (viewDuLieu.RowCount > 0);
+            btnSaveOrder.Enabled = (viewDuLieu.RowCount > 0);
         }
 
-        private void btnAdd_Click(object sender, EventArgs e)
+        private void SearchProduct()
         {
-
+            _projectDataContext = new ProjectDataContext();
+            _productRepository = new ProductRepository(_projectDataContext);
+            dgvDuLieuInventory.DataSource = _productRepository.GetList().OrderBy(_ => _.CategoryName).ThenBy(_ => _.ItemName);
         }
 
-        private void btnEdit_Click(object sender, EventArgs e)
+        private void Clear()
         {
-
+            _orderDetail = new DataTable();
+            _orderDetail.Columns.Add("Delete", typeof(string));
+            _orderDetail.Columns.Add("ProductId", typeof(string));
+            _orderDetail.Columns.Add("ItemCode", typeof(string));
+            _orderDetail.Columns.Add("ItemName", typeof(string));
+            _orderDetail.Columns.Add("UnitId", typeof(string));
+            _orderDetail.Columns.Add("UnitName", typeof(string));
+            _orderDetail.Columns.Add("Quantity", typeof(float));
+            _orderDetail.Columns.Add("Price", typeof(float));
+            _orderDetail.Columns.Add("Total", typeof(float));
+            _orderDetail.Columns.Add("RemainVirtual", typeof(float));
+            _orderDetail.Columns.Add("RemainActual", typeof(float));
+            txtOrderNo.Text = "";
+            dtpOrderDate.Value = DateTime.Now;
+            txtCarNumberOrder.Text = "";
+            txtTongTienChuaBaoGomVAT.Text = "0";
+            txtVAT.Text = "10";
+            txtTienVAT.Text = "0";
+            txtTongTienDaBaoGomVAT.Text = "0";
         }
 
-        private void btnDelete_Click(object sender, EventArgs e)
+        private void AddProduct()
         {
-            if (viewDuLieu.RowCount > 0 && XtraMessageBox.Show(LanguageTranslate.ChangeLanguageText("Bạn có muốn xóa thông tin này?"), LanguageTranslate.ChangeLanguageText("Xác nhận"), MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            _orderDetail.Rows.Add(new object[] {
+                "Xóa",
+                viewDuLieuInventory.GetRowCellValue(viewDuLieuInventory.FocusedRowHandle, "Id").ToString(),
+                viewDuLieuInventory.GetRowCellValue(viewDuLieuInventory.FocusedRowHandle, "ItemCode").ToString(),
+                viewDuLieuInventory.GetRowCellValue(viewDuLieuInventory.FocusedRowHandle, "ItemName").ToString(),
+                viewDuLieuInventory.GetRowCellValue(viewDuLieuInventory.FocusedRowHandle, "UnitId").ToString(),
+                viewDuLieuInventory.GetRowCellValue(viewDuLieuInventory.FocusedRowHandle, "UnitName").ToString(),
+                0,
+                float.Parse(viewDuLieuInventory.GetRowCellValue(viewDuLieuInventory.FocusedRowHandle, "SalePrice").ToString()),
+                float.Parse(viewDuLieuInventory.GetRowCellValue(viewDuLieuInventory.FocusedRowHandle, "SalePrice").ToString()),
+                float.Parse(viewDuLieuInventory.GetRowCellValue(viewDuLieuInventory.FocusedRowHandle, "RemainVirtual").ToString()),
+                float.Parse(viewDuLieuInventory.GetRowCellValue(viewDuLieuInventory.FocusedRowHandle, "RemainActual").ToString())
+            });
+            Calculate();
+        }
+
+        private void EditProduct(int rowIndex)
+        {
+            if (!GeneralHelper.IsStringDouble(viewDuLieu.GetRowCellValue(rowIndex, "Quantity").ToString()))
             {
-                _agencyRepository.Remove(viewDuLieu.GetRowCellValue(viewDuLieu.FocusedRowHandle, "Id").ToString());
-                UnitOfWork agencyOfWork = new UnitOfWork(_projectDataContext);
-                int result = agencyOfWork.Complete();
-                if (result > 0)
-                {
-                    Search();
-                }
-                else
-                {
-                    XtraMessageBox.Show(LanguageTranslate.ChangeLanguageText("Xóa thất bại"), LanguageTranslate.ChangeLanguageText("Thông báo"), MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
+                _changed = false;
+                viewDuLieu.SetRowCellValue(rowIndex, "Quantity", 0);
+                _changed = true;
+            }
+            Calculate();
+        }
+
+        private void DeleteProduct(int rowIndex)
+        {
+            _orderDetail.Rows.RemoveAt(rowIndex);
+            Calculate();
+        }
+
+        private void viewDuLieuInventory_DoubleClick(object sender, EventArgs e)
+        {
+            if (viewDuLieuInventory.RowCount > 0)
+            {
+                AddProduct();
             }
         }
 
-        private void btnExcel_Click(object sender, EventArgs e)
+        private void Calculate()
         {
-            GeneralHelper.ExportExcel(dgvDuLieu);
+            dgvDuLieu.DataSource = _orderDetail;
+            float total = 0;
+            float subTotal = 0;
+            for (int i = 0; i < viewDuLieu.RowCount; i++)
+            {
+                subTotal = (float.Parse(viewDuLieu.GetRowCellValue(i, "Quantity").ToString()) * float.Parse(viewDuLieu.GetRowCellValue(i, "Price").ToString()));
+                viewDuLieu.SetRowCellValue(i, "Total", subTotal);
+                total += subTotal;
+            }
+            txtTongTienChuaBaoGomVAT.Text = total.ToString("N0");
+            txtTienVAT.Text = (total * (float)txtVAT.Value / 100).ToString("N0");
+            txtTongTienDaBaoGomVAT.Text = (total * (1 + (float)txtVAT.Value / 100)).ToString("N0");
         }
 
-        private void btnRefresh_Click(object sender, EventArgs e)
+        private bool CheckData()
         {
-            Search();
+            if (txtCarNumberOrder.Text.Trim() == "")
+            {
+                XtraMessageBox.Show(LanguageTranslate.ChangeLanguageText("Chưa điền dữ liệu"), LanguageTranslate.ChangeLanguageText("Thông báo"), MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtCarNumberOrder.Focus();
+                return false;
+            }
+            return true;
+        }
+
+        private void Save(bool submit)
+        {
+            try
+            {
+                if (!CheckData()) return;
+                _projectDataContext = new ProjectDataContext();
+                _orderRepository = new OrderRepository(_projectDataContext);
+                _orderDetailRepository = new OrderDetailRepository(_projectDataContext);
+                //Table Order
+                Order order = new Order();
+                order.OrderDate = dtpOrderDate.Value;
+                order.CarNumberOrder = txtCarNumberOrder.Text.Trim();
+                order.UseCarStatus = chkCompany.Checked ? GlobalConstants.UseCarStatusValue.Company : GlobalConstants.UseCarStatusValue.Agency;
+                order.Total = float.Parse(txtTongTienChuaBaoGomVAT.Text);
+                order.VAT = (float)txtVAT.Value;
+                order.VATMoney = float.Parse(txtTienVAT.Text);
+                order.SEQ = 0;
+                order.ProcessingCarStatus = GlobalConstants.ProcessingCarStatusValue.None;
+                order.ProcessingStatus = GlobalConstants.ProcessingStatusValue.None;
+                _orderRepository.Save(order);
+                txtOrderNo.Text = _productRepository.id;
+                for (int i = 0; i < viewDuLieu.RowCount; i++)
+                {
+                    OrderDetail orderDetail = new OrderDetail();
+                    orderDetail.OrderId = txtOrderNo.Text;
+                    orderDetail.ItemId = viewDuLieu.GetRowCellValue(i, "ProductId").ToString();
+                    orderDetail.UnitId = viewDuLieu.GetRowCellValue(i, "UnitId").ToString();
+                    orderDetail.Quantity = float.Parse(viewDuLieu.GetRowCellValue(i, "Quantity").ToString());
+                    orderDetail.Price = float.Parse(viewDuLieu.GetRowCellValue(i, "Price").ToString());
+                    orderDetail.Discount = 0;
+                    orderDetail.DiscountMoney = 0;
+                    _orderDetailRepository.Save(orderDetail);
+                }
+                UnitOfWork productOfWork = new UnitOfWork(_projectDataContext);
+                int result = productOfWork.Complete();
+                if (result > 0)
+                {
+                    XtraMessageBox.Show(LanguageTranslate.ChangeLanguageText("Lưu thành công"), LanguageTranslate.ChangeLanguageText("Thông báo"));
+                    Clear();
+                }
+                else
+                {
+                    XtraMessageBox.Show(LanguageTranslate.ChangeLanguageText("Lưu thất bại"), LanguageTranslate.ChangeLanguageText("Thông báo"), MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+            }
+            catch (Exception ex)
+            {
+                XtraMessageBox.Show(LanguageTranslate.ChangeLanguageText("Lưu thất bại"), LanguageTranslate.ChangeLanguageText("Thông báo"), MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+        }
+
+        private void btnSendOrder_Click(object sender, EventArgs e)
+        {
+            Save(true);
+        }
+
+        private void btnSaveOrder_Click(object sender, EventArgs e)
+        {
+            Save(false);
+        }
+
+        private void btnSearchProduct_Click(object sender, EventArgs e)
+        {
+            SearchProduct();
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -128,19 +239,24 @@ namespace NhuaTienPhong.View.Orders
             Close();
         }
 
-        private void viewDuLieu_KeyDown(object sender, KeyEventArgs e)
+        private void viewDuLieu_RowCellClick(object sender, DevExpress.XtraGrid.Views.Grid.RowCellClickEventArgs e)
         {
-
+            if (e.RowHandle >= 0 && e.Column.FieldName == "Delete")
+                DeleteProduct(e.RowHandle);
         }
 
         private void viewDuLieu_CustomDrawRowIndicator(object sender, DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventArgs e)
         {
-
+            if (e.RowHandle >= 0)
+                e.Info.DisplayText = (e.RowHandle + 1).ToString();
         }
 
-        private void viewDuLieu_RowCellStyle(object sender, DevExpress.XtraGrid.Views.Grid.RowCellStyleEventArgs e)
+        private void viewDuLieu_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
         {
-
+            if (_changed && e.Column.FieldName == "Quantity")
+            {
+                EditProduct(e.RowHandle);
+            }
         }
     }
 }

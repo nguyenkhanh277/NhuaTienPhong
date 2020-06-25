@@ -47,9 +47,10 @@ namespace NhuaTienPhong.View.Home
             this.btnListProcessing = new DevExpress.XtraBars.BarButtonItem();
             this.btnProcessingOrder = new DevExpress.XtraBars.BarButtonItem();
             this.btnSetting = new DevExpress.XtraBars.BarButtonItem();
-            this.btnInventory = new DevExpress.XtraBars.BarButtonItem();
+            this.btnProduct = new DevExpress.XtraBars.BarButtonItem();
             this.btnConfirmOrder = new DevExpress.XtraBars.BarButtonItem();
             this.btnSyncVsBravo = new DevExpress.XtraBars.BarButtonItem();
+            this.btnCategory = new DevExpress.XtraBars.BarButtonItem();
             this.rbpHeThong = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.rbpDanhMuc = new DevExpress.XtraBars.Ribbon.RibbonPage();
@@ -83,11 +84,12 @@ namespace NhuaTienPhong.View.Home
             this.btnListProcessing,
             this.btnProcessingOrder,
             this.btnSetting,
-            this.btnInventory,
+            this.btnProduct,
             this.btnConfirmOrder,
-            this.btnSyncVsBravo});
+            this.btnSyncVsBravo,
+            this.btnCategory});
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl1.MaxItemId = 46;
+            this.ribbonControl1.MaxItemId = 47;
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.PageHeaderItemLinks.Add(this.txtUser);
             this.ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
@@ -235,14 +237,14 @@ namespace NhuaTienPhong.View.Home
             this.btnSetting.Name = "btnSetting";
             this.btnSetting.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnSetting_ItemClick);
             // 
-            // btnInventory
+            // btnProduct
             // 
-            this.btnInventory.Caption = "Hàng hóa";
-            this.btnInventory.Id = 43;
-            this.btnInventory.ImageOptions.LargeImage = global::NhuaTienPhong.Properties.Resources.Inventory;
-            this.btnInventory.LargeWidth = 100;
-            this.btnInventory.Name = "btnInventory";
-            this.btnInventory.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnInventory_ItemClick);
+            this.btnProduct.Caption = "Hàng hóa";
+            this.btnProduct.Id = 43;
+            this.btnProduct.ImageOptions.LargeImage = global::NhuaTienPhong.Properties.Resources.Inventory;
+            this.btnProduct.LargeWidth = 100;
+            this.btnProduct.Name = "btnProduct";
+            this.btnProduct.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnProduct_ItemClick);
             // 
             // btnConfirmOrder
             // 
@@ -257,6 +259,15 @@ namespace NhuaTienPhong.View.Home
             this.btnSyncVsBravo.Id = 45;
             this.btnSyncVsBravo.Name = "btnSyncVsBravo";
             this.btnSyncVsBravo.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnSyncVsBravo_ItemClick);
+            // 
+            // btnCategory
+            // 
+            this.btnCategory.Caption = "Nhóm hàng";
+            this.btnCategory.Id = 46;
+            this.btnCategory.ImageOptions.LargeImage = global::NhuaTienPhong.Properties.Resources.Category;
+            this.btnCategory.LargeWidth = 100;
+            this.btnCategory.Name = "btnCategory";
+            this.btnCategory.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnCategory_ItemClick);
             // 
             // rbpHeThong
             // 
@@ -287,7 +298,8 @@ namespace NhuaTienPhong.View.Home
             this.ribbonPageGroup3.ItemLinks.Add(this.btnCar);
             this.ribbonPageGroup3.ItemLinks.Add(this.btnWarehouse);
             this.ribbonPageGroup3.ItemLinks.Add(this.btnUnit);
-            this.ribbonPageGroup3.ItemLinks.Add(this.btnInventory);
+            this.ribbonPageGroup3.ItemLinks.Add(this.btnCategory);
+            this.ribbonPageGroup3.ItemLinks.Add(this.btnProduct);
             this.ribbonPageGroup3.Name = "ribbonPageGroup3";
             // 
             // rbpChucNang
@@ -362,9 +374,10 @@ namespace NhuaTienPhong.View.Home
         private BarButtonItem btnProcessingOrder;
         private BarButtonItem btnSetting;
         private BarStaticItem barStaticItem1;
-        private BarButtonItem btnInventory;
+        private BarButtonItem btnProduct;
         private BarButtonItem btnConfirmOrder;
         private BarButtonItem btnSyncVsBravo;
+        private BarButtonItem btnCategory;
     }
 }
 

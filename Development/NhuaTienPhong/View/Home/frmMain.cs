@@ -1,5 +1,4 @@
-﻿using DevExpress.Utils;
-using DevExpress.XtraBars;
+﻿using DevExpress.XtraBars;
 using DevExpress.XtraBars.Ribbon;
 using DevExpress.XtraEditors;
 using NhuaTienPhong.Core;
@@ -7,18 +6,10 @@ using NhuaTienPhong.Core.Helper;
 using NhuaTienPhong.Persistence;
 using NhuaTienPhong.Persistence.Repositories;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
-
 
 namespace NhuaTienPhong.View.Home
 {
-    public partial class frmMain : DevExpress.XtraBars.Ribbon.RibbonForm
+    public partial class frmMain : RibbonForm
     {
         ProjectDataContext _projectDataContext = new ProjectDataContext();
         UserRepository _userRepository;
@@ -70,7 +61,8 @@ namespace NhuaTienPhong.View.Home
             btnCar.Caption = LanguageTranslate.ChangeLanguageText(btnCar.Caption);
             btnWarehouse.Caption = LanguageTranslate.ChangeLanguageText(btnWarehouse.Caption);
             btnUnit.Caption = LanguageTranslate.ChangeLanguageText(btnUnit.Caption);
-            btnInventory.Caption = LanguageTranslate.ChangeLanguageText(btnInventory.Caption);
+            btnCategory.Caption = LanguageTranslate.ChangeLanguageText(btnCategory.Caption);
+            btnProduct.Caption = LanguageTranslate.ChangeLanguageText(btnProduct.Caption);
 
             btnRegistOrder.Caption = LanguageTranslate.ChangeLanguageText(btnRegistOrder.Caption);
             btnProcessingOrder.Caption = LanguageTranslate.ChangeLanguageText(btnProcessingOrder.Caption);
@@ -97,7 +89,8 @@ namespace NhuaTienPhong.View.Home
             btnCar.Enabled = _userRepository.CheckPermission(GlobalConstants.username, "Car", "View");
             btnWarehouse.Enabled = _userRepository.CheckPermission(GlobalConstants.username, "Warehouse", "View");
             btnUnit.Enabled = _userRepository.CheckPermission(GlobalConstants.username, "Unit", "View");
-            btnInventory.Enabled = _userRepository.CheckPermission(GlobalConstants.username, "Inventory", "View");
+            btnCategory.Enabled = _userRepository.CheckPermission(GlobalConstants.username, "Category", "View");
+            btnProduct.Enabled = _userRepository.CheckPermission(GlobalConstants.username, "Product", "View");
 
             btnRegistOrder.Enabled = _userRepository.CheckPermission(GlobalConstants.username, "RegistOrder", "View");
             btnProcessingOrder.Enabled = _userRepository.CheckPermission(GlobalConstants.username, "ProcessingOrder", "View");
@@ -221,44 +214,49 @@ namespace NhuaTienPhong.View.Home
             }
         }
 
-        private void btnInventory_ItemClick(object sender, ItemClickEventArgs e)
+        private void btnCategory_ItemClick(object sender, ItemClickEventArgs e)
         {
-            XtraForm frm = this.CheckExist(typeof(Inventorys.frmInventory));
+            XtraForm frm = this.CheckExist(typeof(Categorys.frmCategory));
             if (frm != null)
             {
                 frm.Activate();
             }
             else
             {
-                Inventorys.frmInventory f = new Inventorys.frmInventory();
+                Categorys.frmCategory f = new Categorys.frmCategory();
                 f.MdiParent = this;
                 f.Show();
             }
         }
 
-        private void btnProductReportOK_ItemClick(object sender, ItemClickEventArgs e)
+        private void btnProduct_ItemClick(object sender, ItemClickEventArgs e)
         {
-            
-        }
-
-        private void btnProductReportNG_ItemClick(object sender, ItemClickEventArgs e)
-        {
-           
-        }
-
-        private void btnReportSyntheticRegistBarcode_ItemClick(object sender, ItemClickEventArgs e)
-        {
-         
-        }
-
-        private void btnReportSyntheticProductionPlan_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            
+            XtraForm frm = this.CheckExist(typeof(Products.frmProduct));
+            if (frm != null)
+            {
+                frm.Activate();
+            }
+            else
+            {
+                Products.frmProduct f = new Products.frmProduct();
+                f.MdiParent = this;
+                f.Show();
+            }
         }
 
         private void btnRegistOrder_ItemClick(object sender, ItemClickEventArgs e)
         {
-
+            XtraForm frm = this.CheckExist(typeof(Orders.frmRegisterOrder));
+            if (frm != null)
+            {
+                frm.Activate();
+            }
+            else
+            {
+                Orders.frmRegisterOrder f = new Orders.frmRegisterOrder();
+                f.MdiParent = this;
+                f.Show();
+            }
         }
 
         private void btnProcessingOrder_ItemClick(object sender, ItemClickEventArgs e)
@@ -284,6 +282,26 @@ namespace NhuaTienPhong.View.Home
         private void btnSyncVsBravo_ItemClick(object sender, ItemClickEventArgs e)
         {
 
+        }
+
+        private void btnProductReportOK_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            
+        }
+
+        private void btnProductReportNG_ItemClick(object sender, ItemClickEventArgs e)
+        {
+           
+        }
+
+        private void btnReportSyntheticRegistBarcode_ItemClick(object sender, ItemClickEventArgs e)
+        {
+         
+        }
+
+        private void btnReportSyntheticProductionPlan_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            
         }
     }
 }

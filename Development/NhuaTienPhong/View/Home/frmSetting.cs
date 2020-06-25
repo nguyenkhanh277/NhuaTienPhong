@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using NhuaTienPhong.Core.Helper;
@@ -13,7 +6,7 @@ using System.Drawing.Printing;
 
 namespace NhuaTienPhong.View.Home
 {
-    public partial class frmSetting : DevExpress.XtraEditors.XtraForm
+    public partial class frmSetting : XtraForm
     {
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {

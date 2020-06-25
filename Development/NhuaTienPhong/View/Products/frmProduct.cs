@@ -1,23 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using NhuaTienPhong.Persistence;
-using NhuaTienPhong.Core;
 using NhuaTienPhong.Persistence.Repositories;
 using NhuaTienPhong.Core.Helper;
-using NhuaTienPhong.Core.Domain;
-using System.Linq.Expressions;
+using System.Drawing;
 
 namespace NhuaTienPhong.View.Products
 {
-    public partial class frmProduct : DevExpress.XtraEditors.XtraForm
+    public partial class frmProduct : XtraForm
     {
         ProjectDataContext _projectDataContext;
         ProductRepository _productRepository;
@@ -161,11 +154,11 @@ namespace NhuaTienPhong.View.Products
             if (e.RowHandle >= 0)
             {
                 DevExpress.XtraGrid.Views.Grid.GridView view = sender as DevExpress.XtraGrid.Views.Grid.GridView;
-                //if (view.GetRowCellValue(e.RowHandle, "Status").ToString() == "NoUse")
-                //{
-                //    e.Appearance.ForeColor = Color.Red;
-                //    e.Appearance.Font = new System.Drawing.Font("Segoe UI", 10F, FontStyle.Strikeout);
-                //}
+                if (view.GetRowCellValue(e.RowHandle, "Status").ToString() == "NoUse")
+                {
+                    e.Appearance.ForeColor = Color.Red;
+                    e.Appearance.Font = new System.Drawing.Font("Segoe UI", 10F, FontStyle.Strikeout);
+                }
             }
         }
     }
