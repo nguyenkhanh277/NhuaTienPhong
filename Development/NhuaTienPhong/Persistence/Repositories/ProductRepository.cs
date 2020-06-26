@@ -5,11 +5,14 @@ using System.Linq;
 using System;
 using NhuaTienPhong.Core;
 using NhuaTienPhong.Core.Helper;
+using System.Threading;
 
 namespace NhuaTienPhong.Persistence.Repositories
 {
     public class ProductRepository : Repository<Product>
     {
+        readonly List<Product> listProducts = new List<Product>();
+        readonly SynchronizationContext context;
         public string id = "";
 
         public ProductRepository(ProjectDataContext projectDataContext) : base(projectDataContext)
@@ -52,6 +55,27 @@ namespace NhuaTienPhong.Persistence.Repositories
                     raw.EditedAt = DateTime.Now;
                     raw.EditedBy = GlobalConstants.username;
                     id = raw.Id;
+                }
+            }
+            catch (Exception ex)
+            {
+                error = true;
+                errorMessage = ex.ToString();
+            }
+        }
+
+        public void CaculateRemainVirtual(string id, float quantity)
+        {
+            error = false;
+            errorMessage = "";
+            try
+            {
+                var product = FirstOrDefault(_ => _.Id.Equals(id));
+                if (product != null)
+                {
+                    product.RemainVirtual = product.RemainVirtual - quantity;
+                    product.EditedAt = DateTime.Now;
+                    product.EditedBy = GlobalConstants.username;
                 }
             }
             catch (Exception ex)

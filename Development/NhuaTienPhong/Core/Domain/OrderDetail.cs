@@ -10,7 +10,6 @@ namespace NhuaTienPhong.Core.Domain
         public string OrderId { get; set; }
         public string WarehouseId { get; set; }
         public string ItemId { get; set; }
-        public string UnitId { get; set; }
         public float Quantity { get; set; }
         public float Price { get; set; }
         public float Discount { get; set; }

@@ -42,6 +42,7 @@
             this.dtpOrderDate = new System.Windows.Forms.DateTimePicker();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.panelControl3 = new DevExpress.XtraEditors.PanelControl();
+            this.txtTienVAT = new DevExpress.XtraEditors.TextEdit();
             this.txtTongTienDaBaoGomVAT = new DevExpress.XtraEditors.TextEdit();
             this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
             this.txtTongTienChuaBaoGomVAT = new DevExpress.XtraEditors.TextEdit();
@@ -58,6 +59,9 @@
             this.dgcUnitId = new DevExpress.XtraGrid.Columns.GridColumn();
             this.dgcUnitName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.dgcQuantity = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemSpinEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemSpinEdit();
+            this.Price = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.Total = new DevExpress.XtraGrid.Columns.GridColumn();
             this.dgcRemainVirtual = new DevExpress.XtraGrid.Columns.GridColumn();
             this.dgcRemainActual = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemCheckEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
@@ -73,15 +77,12 @@
             this.ItemName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.UnitId = new DevExpress.XtraGrid.Columns.GridColumn();
             this.UnitName = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.SalePrice = new DevExpress.XtraGrid.Columns.GridColumn();
             this.RemainVirtual = new DevExpress.XtraGrid.Columns.GridColumn();
             this.RemainActual = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemCheckEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.repositoryItemButtonEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
             this.labelControl8 = new DevExpress.XtraEditors.LabelControl();
-            this.Total = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.Price = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.SalePrice = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.txtTienVAT = new DevExpress.XtraEditors.TextEdit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtOrderNo.Properties)).BeginInit();
@@ -90,12 +91,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtCarNumberOrder.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).BeginInit();
             this.panelControl3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTienVAT.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTongTienDaBaoGomVAT.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTongTienChuaBaoGomVAT.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtVAT.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDuLieu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.viewDuLieu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemMemoEdit2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSpinEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl4)).BeginInit();
@@ -105,7 +108,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemMemoEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtTienVAT.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // btnClose
@@ -295,6 +297,24 @@
             this.panelControl3.Size = new System.Drawing.Size(690, 115);
             this.panelControl3.TabIndex = 1;
             // 
+            // txtTienVAT
+            // 
+            this.txtTienVAT.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtTienVAT.EditValue = "0";
+            this.txtTienVAT.Location = new System.Drawing.Point(550, 43);
+            this.txtTienVAT.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtTienVAT.Name = "txtTienVAT";
+            this.txtTienVAT.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.txtTienVAT.Properties.Appearance.Options.UseFont = true;
+            this.txtTienVAT.Properties.AppearanceFocused.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.txtTienVAT.Properties.AppearanceFocused.Options.UseBackColor = true;
+            this.txtTienVAT.Properties.AutoHeight = false;
+            this.txtTienVAT.Properties.Padding = new System.Windows.Forms.Padding(0, 0, 16, 0);
+            this.txtTienVAT.Properties.ReadOnly = true;
+            this.txtTienVAT.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.txtTienVAT.Size = new System.Drawing.Size(134, 30);
+            this.txtTienVAT.TabIndex = 21;
+            // 
             // txtTongTienDaBaoGomVAT
             // 
             this.txtTongTienDaBaoGomVAT.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -403,7 +423,8 @@
             this.dgvDuLieu.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemCheckEdit2,
             this.repositoryItemButtonEdit2,
-            this.repositoryItemMemoEdit2});
+            this.repositoryItemMemoEdit2,
+            this.repositoryItemSpinEdit1});
             this.dgvDuLieu.Size = new System.Drawing.Size(690, 374);
             this.dgvDuLieu.TabIndex = 2;
             this.dgvDuLieu.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -437,16 +458,15 @@
             this.viewDuLieu.OptionsCustomization.AllowGroup = false;
             this.viewDuLieu.OptionsCustomization.AllowSort = false;
             this.viewDuLieu.OptionsSelection.EnableAppearanceFocusedRow = false;
-            this.viewDuLieu.OptionsSelection.MultiSelectMode = DevExpress.XtraGrid.Views.Grid.GridMultiSelectMode.CellSelect;
             this.viewDuLieu.OptionsView.ShowGroupPanel = false;
-            this.viewDuLieu.RowHeight = 30;
+            this.viewDuLieu.RowHeight = 40;
             this.viewDuLieu.RowCellClick += new DevExpress.XtraGrid.Views.Grid.RowCellClickEventHandler(this.viewDuLieu_RowCellClick);
             this.viewDuLieu.CustomDrawRowIndicator += new DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventHandler(this.viewDuLieu_CustomDrawRowIndicator);
             this.viewDuLieu.CellValueChanged += new DevExpress.XtraGrid.Views.Base.CellValueChangedEventHandler(this.viewDuLieu_CellValueChanged);
             // 
             // dgcDelete
             // 
-            this.dgcDelete.AppearanceCell.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.dgcDelete.AppearanceCell.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold);
             this.dgcDelete.AppearanceCell.ForeColor = System.Drawing.Color.Red;
             this.dgcDelete.AppearanceCell.Options.UseFont = true;
             this.dgcDelete.AppearanceCell.Options.UseForeColor = true;
@@ -456,15 +476,15 @@
             this.dgcDelete.AppearanceHeader.Options.UseFont = true;
             this.dgcDelete.AppearanceHeader.Options.UseTextOptions = true;
             this.dgcDelete.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.dgcDelete.Caption = "Xóa";
+            this.dgcDelete.Caption = " ";
             this.dgcDelete.FieldName = "Delete";
-            this.dgcDelete.MaxWidth = 50;
-            this.dgcDelete.MinWidth = 50;
+            this.dgcDelete.MaxWidth = 40;
+            this.dgcDelete.MinWidth = 40;
             this.dgcDelete.Name = "dgcDelete";
             this.dgcDelete.OptionsColumn.AllowEdit = false;
             this.dgcDelete.Visible = true;
             this.dgcDelete.VisibleIndex = 0;
-            this.dgcDelete.Width = 50;
+            this.dgcDelete.Width = 40;
             // 
             // dgcProductId
             // 
@@ -521,7 +541,7 @@
             this.dgcItemName.OptionsColumn.AllowMove = false;
             this.dgcItemName.Visible = true;
             this.dgcItemName.VisibleIndex = 1;
-            this.dgcItemName.Width = 188;
+            this.dgcItemName.Width = 208;
             // 
             // dgcUnitId
             // 
@@ -576,6 +596,7 @@
             this.dgcQuantity.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.dgcQuantity.AppearanceHeader.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap;
             this.dgcQuantity.Caption = "SL đặt hàng";
+            this.dgcQuantity.ColumnEdit = this.repositoryItemSpinEdit1;
             this.dgcQuantity.DisplayFormat.FormatString = "N0";
             this.dgcQuantity.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.dgcQuantity.FieldName = "Quantity";
@@ -586,6 +607,59 @@
             this.dgcQuantity.Visible = true;
             this.dgcQuantity.VisibleIndex = 3;
             this.dgcQuantity.Width = 60;
+            // 
+            // repositoryItemSpinEdit1
+            // 
+            this.repositoryItemSpinEdit1.AutoHeight = false;
+            this.repositoryItemSpinEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton()});
+            this.repositoryItemSpinEdit1.IsFloatValue = false;
+            this.repositoryItemSpinEdit1.Mask.EditMask = "N0";
+            this.repositoryItemSpinEdit1.Name = "repositoryItemSpinEdit1";
+            // 
+            // Price
+            // 
+            this.Price.AppearanceCell.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.Price.AppearanceCell.Options.UseFont = true;
+            this.Price.AppearanceCell.Options.UseTextOptions = true;
+            this.Price.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.Price.AppearanceHeader.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.Price.AppearanceHeader.Options.UseFont = true;
+            this.Price.AppearanceHeader.Options.UseTextOptions = true;
+            this.Price.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.Price.Caption = "Đơn giá";
+            this.Price.DisplayFormat.FormatString = "N0";
+            this.Price.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.Price.FieldName = "Price";
+            this.Price.MaxWidth = 70;
+            this.Price.MinWidth = 70;
+            this.Price.Name = "Price";
+            this.Price.OptionsColumn.AllowEdit = false;
+            this.Price.Visible = true;
+            this.Price.VisibleIndex = 6;
+            this.Price.Width = 70;
+            // 
+            // Total
+            // 
+            this.Total.AppearanceCell.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.Total.AppearanceCell.Options.UseFont = true;
+            this.Total.AppearanceCell.Options.UseTextOptions = true;
+            this.Total.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.Total.AppearanceHeader.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.Total.AppearanceHeader.Options.UseFont = true;
+            this.Total.AppearanceHeader.Options.UseTextOptions = true;
+            this.Total.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.Total.Caption = "Thành tiền";
+            this.Total.DisplayFormat.FormatString = "N0";
+            this.Total.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.Total.FieldName = "Total";
+            this.Total.MaxWidth = 80;
+            this.Total.MinWidth = 80;
+            this.Total.Name = "Total";
+            this.Total.OptionsColumn.AllowEdit = false;
+            this.Total.Visible = true;
+            this.Total.VisibleIndex = 7;
+            this.Total.Width = 80;
             // 
             // dgcRemainVirtual
             // 
@@ -713,8 +787,6 @@
             this.viewDuLieuInventory.OptionsBehavior.Editable = false;
             this.viewDuLieuInventory.OptionsCustomization.AllowColumnMoving = false;
             this.viewDuLieuInventory.OptionsCustomization.AllowQuickHideColumns = false;
-            this.viewDuLieuInventory.OptionsSelection.EnableAppearanceFocusedRow = false;
-            this.viewDuLieuInventory.OptionsSelection.MultiSelectMode = DevExpress.XtraGrid.Views.Grid.GridMultiSelectMode.CellSelect;
             this.viewDuLieuInventory.OptionsView.ShowAutoFilterRow = true;
             this.viewDuLieuInventory.OptionsView.ShowGroupPanel = false;
             this.viewDuLieuInventory.RowHeight = 40;
@@ -800,6 +872,12 @@
             this.UnitName.FieldName = "UnitName";
             this.UnitName.Name = "UnitName";
             // 
+            // SalePrice
+            // 
+            this.SalePrice.Caption = "SalePrice";
+            this.SalePrice.FieldName = "SalePrice";
+            this.SalePrice.Name = "SalePrice";
+            // 
             // RemainVirtual
             // 
             this.RemainVirtual.AppearanceCell.Font = new System.Drawing.Font("Segoe UI", 10F);
@@ -879,74 +957,6 @@
             this.labelControl8.TabIndex = 16;
             this.labelControl8.Text = "Kích đúp vào hàng hóa để điền vào đơn hàng";
             // 
-            // Total
-            // 
-            this.Total.AppearanceCell.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.Total.AppearanceCell.Options.UseFont = true;
-            this.Total.AppearanceCell.Options.UseTextOptions = true;
-            this.Total.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
-            this.Total.AppearanceHeader.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.Total.AppearanceHeader.Options.UseFont = true;
-            this.Total.AppearanceHeader.Options.UseTextOptions = true;
-            this.Total.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.Total.Caption = "Thành tiền";
-            this.Total.DisplayFormat.FormatString = "N0";
-            this.Total.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.Total.FieldName = "Total";
-            this.Total.MaxWidth = 80;
-            this.Total.MinWidth = 80;
-            this.Total.Name = "Total";
-            this.Total.OptionsColumn.AllowEdit = false;
-            this.Total.Visible = true;
-            this.Total.VisibleIndex = 7;
-            this.Total.Width = 80;
-            // 
-            // Price
-            // 
-            this.Price.AppearanceCell.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.Price.AppearanceCell.Options.UseFont = true;
-            this.Price.AppearanceCell.Options.UseTextOptions = true;
-            this.Price.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
-            this.Price.AppearanceHeader.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.Price.AppearanceHeader.Options.UseFont = true;
-            this.Price.AppearanceHeader.Options.UseTextOptions = true;
-            this.Price.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.Price.Caption = "Đơn giá";
-            this.Price.DisplayFormat.FormatString = "N0";
-            this.Price.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.Price.FieldName = "Price";
-            this.Price.MaxWidth = 70;
-            this.Price.MinWidth = 70;
-            this.Price.Name = "Price";
-            this.Price.OptionsColumn.AllowEdit = false;
-            this.Price.Visible = true;
-            this.Price.VisibleIndex = 6;
-            this.Price.Width = 70;
-            // 
-            // SalePrice
-            // 
-            this.SalePrice.Caption = "SalePrice";
-            this.SalePrice.FieldName = "SalePrice";
-            this.SalePrice.Name = "SalePrice";
-            // 
-            // txtTienVAT
-            // 
-            this.txtTienVAT.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtTienVAT.EditValue = "0";
-            this.txtTienVAT.Location = new System.Drawing.Point(550, 43);
-            this.txtTienVAT.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txtTienVAT.Name = "txtTienVAT";
-            this.txtTienVAT.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.txtTienVAT.Properties.Appearance.Options.UseFont = true;
-            this.txtTienVAT.Properties.AppearanceFocused.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.txtTienVAT.Properties.AppearanceFocused.Options.UseBackColor = true;
-            this.txtTienVAT.Properties.AutoHeight = false;
-            this.txtTienVAT.Properties.Padding = new System.Windows.Forms.Padding(0, 0, 16, 0);
-            this.txtTienVAT.Properties.ReadOnly = true;
-            this.txtTienVAT.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.txtTienVAT.Size = new System.Drawing.Size(134, 30);
-            this.txtTienVAT.TabIndex = 21;
-            // 
             // frmRegisterOrder
             // 
             this.Appearance.Options.UseFont = true;
@@ -975,12 +985,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).EndInit();
             this.panelControl3.ResumeLayout(false);
             this.panelControl3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTienVAT.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTongTienDaBaoGomVAT.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTongTienChuaBaoGomVAT.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtVAT.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDuLieu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.viewDuLieu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemMemoEdit2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSpinEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl4)).EndInit();
@@ -990,7 +1002,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemMemoEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtTienVAT.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1050,5 +1061,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn Total;
         private DevExpress.XtraGrid.Columns.GridColumn SalePrice;
         private DevExpress.XtraEditors.TextEdit txtTienVAT;
+        private DevExpress.XtraEditors.Repository.RepositoryItemSpinEdit repositoryItemSpinEdit1;
     }
 }

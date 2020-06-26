@@ -13,7 +13,7 @@ namespace NhuaTienPhong.Core.Domain
         public float Total { get; set; }
         public float VAT { get; set; }
         public float VATMoney { get; set; }
-        public float SEQ { get; set; }
+        public string SEQ { get; set; }
         public GlobalConstants.ProcessingCarStatusValue ProcessingCarStatus { get; set; }
         public string CarNumber { get; set; }
         public string Driver { get; set; }

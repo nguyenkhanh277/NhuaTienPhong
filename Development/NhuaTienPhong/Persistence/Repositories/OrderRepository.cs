@@ -25,7 +25,9 @@ namespace NhuaTienPhong.Persistence.Repositories
         {
             if (String.IsNullOrEmpty(order.Id))
             {
-                order.Id = GetAutoID();
+                string seq = GetAutoID(order.OrderDate);
+                order.Id = "PO" + order.OrderDate.ToString("ddMMyyyy") + seq;
+                order.SEQ = seq;
                 order.Status = GlobalConstants.StatusValue.Using;
                 order.CreatedAt = DateTime.Now;
                 order.CreatedBy = GlobalConstants.username;
@@ -60,9 +62,20 @@ namespace NhuaTienPhong.Persistence.Repositories
             }
         }
 
-        public string GetAutoID()
+        public string GetAutoID(DateTime dateTime)
         {
-            return Guid.NewGuid().ToString();
+            string result = "1";
+            try
+            {
+                var order = Find(_ => _.OrderDate.Year.Equals(dateTime.Year) && _.OrderDate.Month.Equals(dateTime.Month) && _.OrderDate.Day.Equals(dateTime.Day));
+                if (order != null)
+                {
+                    result = order.Max(_ => _.SEQ);
+                    result = (result == null ? "1" : result);
+                }
+            }
+            catch { }
+            return int.Parse(result).ToString("0000");
         }
     }
 }

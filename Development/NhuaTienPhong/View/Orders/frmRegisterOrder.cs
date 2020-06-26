@@ -8,6 +8,8 @@ using NhuaTienPhong.Persistence.Repositories;
 using NhuaTienPhong.Core.Helper;
 using NhuaTienPhong.Core.Domain;
 using NhuaTienPhong.Core;
+using DevExpress.XtraGrid;
+using DevExpress.XtraGrid.Views.Grid;
 
 namespace NhuaTienPhong.View.Orders
 {
@@ -57,13 +59,7 @@ namespace NhuaTienPhong.View.Orders
         {
             LanguageTranslate.ChangeLanguageForm(this);
             LanguageTranslate.ChangeLanguageGridView(viewDuLieu);
-            SearchProduct();
             Clear();
-        }
-
-        private void Control()
-        {
-            btnSaveOrder.Enabled = (viewDuLieu.RowCount > 0);
         }
 
         private void SearchProduct()
@@ -71,6 +67,7 @@ namespace NhuaTienPhong.View.Orders
             _projectDataContext = new ProjectDataContext();
             _productRepository = new ProductRepository(_projectDataContext);
             dgvDuLieuInventory.DataSource = _productRepository.GetList().OrderBy(_ => _.CategoryName).ThenBy(_ => _.ItemName);
+
         }
 
         private void Clear()
@@ -87,6 +84,7 @@ namespace NhuaTienPhong.View.Orders
             _orderDetail.Columns.Add("Total", typeof(float));
             _orderDetail.Columns.Add("RemainVirtual", typeof(float));
             _orderDetail.Columns.Add("RemainActual", typeof(float));
+            LoadData(0);
             txtOrderNo.Text = "";
             dtpOrderDate.Value = DateTime.Now;
             txtCarNumberOrder.Text = "";
@@ -94,41 +92,53 @@ namespace NhuaTienPhong.View.Orders
             txtVAT.Text = "10";
             txtTienVAT.Text = "0";
             txtTongTienDaBaoGomVAT.Text = "0";
+            SearchProduct();
+        }
+
+        private bool CheckExist(string productId)
+        {
+            bool result = false;
+            for (int i = 0; i < viewDuLieu.RowCount; i++)
+            {
+                if (viewDuLieu.GetRowCellValue(i, "ProductId").ToString() == productId)
+                {
+                    LoadData(i);
+                    result = true;
+                }
+            }
+            return result;
         }
 
         private void AddProduct()
         {
-            _orderDetail.Rows.Add(new object[] {
-                "Xóa",
-                viewDuLieuInventory.GetRowCellValue(viewDuLieuInventory.FocusedRowHandle, "Id").ToString(),
-                viewDuLieuInventory.GetRowCellValue(viewDuLieuInventory.FocusedRowHandle, "ItemCode").ToString(),
-                viewDuLieuInventory.GetRowCellValue(viewDuLieuInventory.FocusedRowHandle, "ItemName").ToString(),
-                viewDuLieuInventory.GetRowCellValue(viewDuLieuInventory.FocusedRowHandle, "UnitId").ToString(),
-                viewDuLieuInventory.GetRowCellValue(viewDuLieuInventory.FocusedRowHandle, "UnitName").ToString(),
-                0,
-                float.Parse(viewDuLieuInventory.GetRowCellValue(viewDuLieuInventory.FocusedRowHandle, "SalePrice").ToString()),
-                float.Parse(viewDuLieuInventory.GetRowCellValue(viewDuLieuInventory.FocusedRowHandle, "SalePrice").ToString()),
-                float.Parse(viewDuLieuInventory.GetRowCellValue(viewDuLieuInventory.FocusedRowHandle, "RemainVirtual").ToString()),
-                float.Parse(viewDuLieuInventory.GetRowCellValue(viewDuLieuInventory.FocusedRowHandle, "RemainActual").ToString())
-            });
-            Calculate();
-        }
-
-        private void EditProduct(int rowIndex)
-        {
-            if (!GeneralHelper.IsStringDouble(viewDuLieu.GetRowCellValue(rowIndex, "Quantity").ToString()))
+            if (CheckExist(viewDuLieuInventory.GetRowCellValue(viewDuLieuInventory.FocusedRowHandle, "Id").ToString()))
             {
-                _changed = false;
-                viewDuLieu.SetRowCellValue(rowIndex, "Quantity", 0);
-                _changed = true;
+                XtraMessageBox.Show(LanguageTranslate.ChangeLanguageText("Dữ liệu đã tồn tại"), LanguageTranslate.ChangeLanguageText("Thông báo"), MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
             }
-            Calculate();
+            else
+            {
+                _orderDetail.Rows.Add(new object[] {
+                    "X",
+                    viewDuLieuInventory.GetRowCellValue(viewDuLieuInventory.FocusedRowHandle, "Id").ToString(),
+                    viewDuLieuInventory.GetRowCellValue(viewDuLieuInventory.FocusedRowHandle, "ItemCode").ToString(),
+                    viewDuLieuInventory.GetRowCellValue(viewDuLieuInventory.FocusedRowHandle, "ItemName").ToString(),
+                    viewDuLieuInventory.GetRowCellValue(viewDuLieuInventory.FocusedRowHandle, "UnitId").ToString(),
+                    viewDuLieuInventory.GetRowCellValue(viewDuLieuInventory.FocusedRowHandle, "UnitName").ToString(),
+                    0,
+                    float.Parse(viewDuLieuInventory.GetRowCellValue(viewDuLieuInventory.FocusedRowHandle, "SalePrice").ToString()),
+                    float.Parse(viewDuLieuInventory.GetRowCellValue(viewDuLieuInventory.FocusedRowHandle, "SalePrice").ToString()),
+                    float.Parse(viewDuLieuInventory.GetRowCellValue(viewDuLieuInventory.FocusedRowHandle, "RemainVirtual").ToString()),
+                    float.Parse(viewDuLieuInventory.GetRowCellValue(viewDuLieuInventory.FocusedRowHandle, "RemainActual").ToString())
+                });
+                Calculate(viewDuLieu.RowCount - 1);
+            }
         }
 
         private void DeleteProduct(int rowIndex)
         {
-            _orderDetail.Rows.RemoveAt(rowIndex);
-            Calculate();
+            viewDuLieu.DeleteRow(rowIndex);
+            Calculate(rowIndex - 1);
         }
 
         private void viewDuLieuInventory_DoubleClick(object sender, EventArgs e)
@@ -139,9 +149,16 @@ namespace NhuaTienPhong.View.Orders
             }
         }
 
-        private void Calculate()
+        private void LoadData(int focusedRowHandle)
         {
             dgvDuLieu.DataSource = _orderDetail;
+            viewDuLieu.FocusedColumn = dgcItemName;
+            viewDuLieu.FocusedRowHandle = focusedRowHandle;
+        }
+
+        private void Calculate(int focusedRowHandle)
+        {
+            LoadData(focusedRowHandle);
             float total = 0;
             float subTotal = 0;
             for (int i = 0; i < viewDuLieu.RowCount; i++)
@@ -174,30 +191,34 @@ namespace NhuaTienPhong.View.Orders
                 _projectDataContext = new ProjectDataContext();
                 _orderRepository = new OrderRepository(_projectDataContext);
                 _orderDetailRepository = new OrderDetailRepository(_projectDataContext);
+                _productRepository = new ProductRepository(_projectDataContext);
+
                 //Table Order
                 Order order = new Order();
                 order.OrderDate = dtpOrderDate.Value;
                 order.CarNumberOrder = txtCarNumberOrder.Text.Trim();
-                order.UseCarStatus = chkCompany.Checked ? GlobalConstants.UseCarStatusValue.Company : GlobalConstants.UseCarStatusValue.Agency;
+                order.UseCarStatus = (chkCompany.Checked ? GlobalConstants.UseCarStatusValue.Company : GlobalConstants.UseCarStatusValue.Agency);
                 order.Total = float.Parse(txtTongTienChuaBaoGomVAT.Text);
                 order.VAT = (float)txtVAT.Value;
                 order.VATMoney = float.Parse(txtTienVAT.Text);
-                order.SEQ = 0;
                 order.ProcessingCarStatus = GlobalConstants.ProcessingCarStatusValue.None;
-                order.ProcessingStatus = GlobalConstants.ProcessingStatusValue.None;
+                order.ProcessingStatus = (submit ? GlobalConstants.ProcessingStatusValue.WaitApprove : GlobalConstants.ProcessingStatusValue.None);
                 _orderRepository.Save(order);
-                txtOrderNo.Text = _productRepository.id;
+                txtOrderNo.Text = _orderRepository.id;
                 for (int i = 0; i < viewDuLieu.RowCount; i++)
                 {
+                    //Table OrderDetail
                     OrderDetail orderDetail = new OrderDetail();
                     orderDetail.OrderId = txtOrderNo.Text;
                     orderDetail.ItemId = viewDuLieu.GetRowCellValue(i, "ProductId").ToString();
-                    orderDetail.UnitId = viewDuLieu.GetRowCellValue(i, "UnitId").ToString();
                     orderDetail.Quantity = float.Parse(viewDuLieu.GetRowCellValue(i, "Quantity").ToString());
                     orderDetail.Price = float.Parse(viewDuLieu.GetRowCellValue(i, "Price").ToString());
                     orderDetail.Discount = 0;
                     orderDetail.DiscountMoney = 0;
                     _orderDetailRepository.Save(orderDetail);
+
+                    //Table Product
+                    _productRepository.CaculateRemainVirtual(viewDuLieu.GetRowCellValue(i, "ProductId").ToString(), float.Parse(viewDuLieu.GetRowCellValue(i, "Quantity").ToString()));
                 }
                 UnitOfWork productOfWork = new UnitOfWork(_projectDataContext);
                 int result = productOfWork.Complete();
@@ -253,9 +274,12 @@ namespace NhuaTienPhong.View.Orders
 
         private void viewDuLieu_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
         {
-            if (_changed && e.Column.FieldName == "Quantity")
+            GridView view = sender as GridView;
+            if (_changed && e.Column.FieldName == "Quantity" && (e.Value == null || String.IsNullOrEmpty(e.Value.ToString())))
             {
-                EditProduct(e.RowHandle);
+                _changed = false;
+                view.SetRowCellValue(e.RowHandle, "Quantity", 0);
+                _changed = true;
             }
         }
     }

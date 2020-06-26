@@ -13,7 +13,7 @@ namespace NhuaTienPhong.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "202006251621588_initial-database"; }
+            get { return "202006261003328_initial-database"; }
         }
         
         string IMigrationMetadata.Source
