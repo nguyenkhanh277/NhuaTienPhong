@@ -64,7 +64,7 @@ namespace NhuaTienPhong.Persistence.Repositories
             }
         }
 
-        public void CaculateRemainVirtual(string id, float quantity)
+        public void CaculateRemainActual(string id, float quantity, bool plus)
         {
             error = false;
             errorMessage = "";
@@ -73,9 +73,40 @@ namespace NhuaTienPhong.Persistence.Repositories
                 var product = FirstOrDefault(_ => _.Id.Equals(id));
                 if (product != null)
                 {
-                    product.RemainVirtual = product.RemainVirtual - quantity;
-                    product.EditedAt = DateTime.Now;
-                    product.EditedBy = GlobalConstants.username;
+                    if (plus)
+                    {
+                        product.RemainActual = product.RemainActual + quantity;
+                    }
+                    else
+                    {
+                        product.RemainActual = product.RemainActual - quantity;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                error = true;
+                errorMessage = ex.ToString();
+            }
+        }
+
+        public void CaculateRemainVirtual(string id, float quantity, bool plus)
+        {
+            error = false;
+            errorMessage = "";
+            try
+            {
+                var product = FirstOrDefault(_ => _.Id.Equals(id));
+                if (product != null)
+                {
+                    if (plus)
+                    {
+                        product.RemainVirtual = product.RemainVirtual + quantity;
+                    }
+                    else
+                    {
+                        product.RemainVirtual = product.RemainVirtual - quantity;
+                    }
                 }
             }
             catch (Exception ex)

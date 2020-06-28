@@ -109,6 +109,7 @@
   <ItemGroup>
     <Compile Include="Core\Domain\Category.cs" />
     <Compile Include="Core\Domain\Base.cs" />
+    <Compile Include="Core\Domain\Bill.cs" />
     <Compile Include="Core\Domain\Product.cs" />
     <Compile Include="Core\Domain\Inventory.cs" />
     <Compile Include="Core\Domain\LanguageLibrary.cs" />

@@ -7,13 +7,13 @@ namespace NhuaTienPhong.Core.Domain
     {
         #region Fields
         public string Id { get; set; }
+        public string SEQ { get; set; }
         public DateTime OrderDate { get; set; }
         public string CarNumberOrder { get; set; }
         public GlobalConstants.UseCarStatusValue UseCarStatus { get; set; }
         public float Total { get; set; }
         public float VAT { get; set; }
         public float VATMoney { get; set; }
-        public string SEQ { get; set; }
         public GlobalConstants.ProcessingCarStatusValue ProcessingCarStatus { get; set; }
         public string CarNumber { get; set; }
         public string Driver { get; set; }

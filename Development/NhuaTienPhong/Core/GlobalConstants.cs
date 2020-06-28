@@ -26,6 +26,7 @@ namespace NhuaTienPhong.Core
         public enum UseCarStatusValue { Agency, Company }
         public enum ProcessingCarStatusValue { None, MergeCar, WaitCar }
         public enum ProcessingStatusValue { None, WaitApprove, Approved, Reject, MergeOrder }
+        public enum BillStatusValue { None, WaitApprove, Approved, Reject, MergeOrder }
         #endregion
     }
 }
